@@ -1,0 +1,135 @@
+/* Zoom effect on category images */
+.card img {
+    transition: transform .5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.08);
+}
+
+/* Optional shadow effect */
+.card:hover {
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+/* Benefits hover effect */
+.benefits-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.benefits-box i {
+    font-size: 40px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.benefits-box:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.benefits-box:hover i {
+    transform: scale(1.2);
+}
+
+.card-body h5 {
+    text-align: center;
+}
+
+
+.card-img-top {
+    height: 500px; /* adjust size as per your design */
+    object-fit: cover;
+}
+
+.card {
+    height: 100%;
+}
+.cat{
+    background-color: #f4f1e6;
+}
+.ln{
+        background-color: #f4f1e6;
+}
+.na{
+    background-color: #f4f1e6;
+}
+/* MAIN SLIDER FIXED HEIGHT */
+.main-slider-homepage,
+.one-slider,
+.item {
+    position: relative;
+    height: 650px;
+    overflow: hidden;
+}
+
+.item img {
+    height: 650px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* LEFT TEXT BOX */
+.slider-text-box,
+.silder-2-left {
+    position: absolute;
+    top: 50%;
+    right: 130px;                /* Distance from left */
+    transform: translateY(-50%);
+    width: 420px;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.60);  /* Soft glass look */
+    backdrop-filter: blur(8px);             /* Glass blur */
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 14px;
+    box-shadow: 0px 12px 35px rgba(0,0,0,0.25);
+    animation: slideFade 1s ease;
+    z-index: 20;
+}
+
+/* HEADING */
+.slider-text-box h1 {
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #222;
+}
+
+/* SUBTEXT */
+.slider-text-box p {
+    margin-top: 12px;
+    font-size: 17px;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+/* ANIMATION */
+@keyframes slideFade {
+    0% { 
+        opacity: 0; 
+        transform: translate(-20px, -50%); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translate(0, -50%); 
+    }
+}
+.main-slider-homepage,
+.one-slider,
+.item {
+    height: 650px;
+}
+
+.item img {
+    height: 650px;
+    object-fit: cover;
+}

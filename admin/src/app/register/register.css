@@ -1,0 +1,86 @@
+/* Center inside white content area */
+.register-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.register-card {
+    width: 420px;
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.register-card:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+/* Title */
+.title {
+    margin-bottom: 5px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e293b;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #13171d;
+    font-weight: 600;
+}
+
+/* Inputs */
+input {
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #1e293b;
+    box-shadow: 0 0 0 2px rgba(30,41,59,0.1);
+}
+
+/* Button */
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #1e293b;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background: #334155;
+    transform: translateY(-2px);
+}

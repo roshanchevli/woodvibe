@@ -1,0 +1,94 @@
+body{
+    background:#d7c68a;
+}
+
+/* Profile Header */
+.profile-header{
+    width:100%;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.1);
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.profile-header .icon{
+    width:90px;
+    height:90px;
+    background:#dfc5aa;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+    color:#fff;
+}
+
+.profile-info h3{
+    margin:0;
+    font-size:28px;
+    font-weight:700;
+}
+
+.profile-info p{
+    margin:3px 0;
+    color:#555;
+}
+
+/* Dashboard Cards */
+.dashboard{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+    gap:25px;
+}
+
+.card-box{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 4px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.card-box:hover{
+    transform: translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-box i{
+    font-size:45px;
+    color:#8a6d46;
+    margin-bottom:10px;
+}
+
+.card-title{
+    font-size:20px;
+    font-weight:600;
+    margin-top:10px;
+}
+
+/* Logout button */
+/* Logout button */
+.logout-btn{
+    margin-top:40px;
+    text-align:center;
+}
+
+.logout-btn a{
+    padding:12px 40px;
+    background:#d9534f;
+    color:#fff;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.logout-btn a:hover{
+    background:#b52b27;
+}

@@ -1,0 +1,81 @@
+<form #productForm="ngForm" (ngSubmit)="save(productForm)">
+  <div class="product-container">
+    <div class="product-card">
+      <div class="card-header">
+        <h4>📦 Add Product</h4>
+      </div>
+
+      <div class="card-body">
+        <!-- Category -->
+        <div class="form-group">
+          <label>Category</label>
+          <select class="form-control" [(ngModel)]="product.category" name="category" required>
+            <option value="" disabled>Select Category</option>
+            <option *ngFor="let c of categories" [value]="c.categoryName">
+              {{ c.categoryName }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Product Name -->
+        <div class="form-group">
+          <label>Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="product.pname"
+            name="pname"
+            required
+          />
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="product.pdesc" name="pdesc">
+          </textarea>
+        </div>
+
+        <!-- Price & Quantity -->
+        <div class="row">
+          <div class="col">
+            <label>Price</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="product.price"
+              name="price"
+              required
+            />
+          </div>
+
+          <div class="col">
+            <label>Quantity</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="product.qty"
+              name="qty"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Date -->
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" class="form-control" [(ngModel)]="product.date" name="date" required />
+        </div>
+
+        <!-- Photo -->
+        <div class="form-group">
+          <label>Product Image</label>
+          <input type="file" class="form-control" #fileInput (change)="onFile($event)" />
+        </div>
+
+        <!-- Button -->
+        <button class="save-btn" type="submit">💾 Save Product</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,113 @@
+.product-container {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.product-card {
+    width: 100%;
+    max-width: 1150px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 55px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 24px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.search-box {
+    width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 2px solid #64748b;
+    transition: 0.3s;
+}
+
+.search-input:focus {
+    border-color: #1e293b;
+    box-shadow: 0 0 0 4px rgba(30,41,59,0.1);
+    outline: none;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.product-table thead {
+    background: linear-gradient(180deg, #111827, #1e293b);
+    color: white;
+}
+
+.product-table th {
+    padding: 18px;
+    text-align: center;
+    border: 1px solid #1f2937;
+}
+
+.product-table td {
+    padding: 18px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+    font-weight: 500;
+    border: 1px solid #e2e8f0;
+}
+
+.product-table tbody tr:nth-child(even) {
+    background-color: #f9fbfd;
+}
+
+.product-table tbody tr:hover {
+    background-color: #e6edf5;
+}
+
+.product-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.edit-input {
+    width: 100%;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+
+.btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 3px;
+    font-weight: 600;
+}
+
+.edit-btn { background: #22c55e; color: white; }
+.save-btn { background: #1e293b; color: white; }
+.cancel-btn { background: #94a3b8; color: white; }
+.delete-btn { background: #ef4444; color: white; }
+
+.no-data {
+    padding: 30px;
+    color: #64748b;
+}

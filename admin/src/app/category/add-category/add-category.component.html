@@ -1,0 +1,41 @@
+<div class="category-wrapper">
+  <div class="category-card">
+    <h2 class="title">Add New Category</h2>
+    <p class="subtitle">Create a new product category</p>
+
+    <form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)">
+      <div class="form-group">
+        <label>Category ID</label>
+        <input
+          type="text"
+          name="categoryId"
+          [(ngModel)]="categoryId"
+          placeholder="Enter category ID"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Category Name</label>
+        <input
+          type="text"
+          name="categoryName"
+          [(ngModel)]="categoryName"
+          placeholder="Enter category name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Category Image</label>
+        <input type="file" class="file-input" #fileInput (change)="onFileChange($event)" />
+      </div>
+
+      <button class="add-btn" type="submit">Add Category</button>
+    </form>
+
+    <p class="success-message" *ngIf="message">
+      {{ message }}
+    </p>
+  </div>
+</div>

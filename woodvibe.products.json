@@ -1,0 +1,312 @@
+[{
+  "_id": {
+    "$oid": "69a1300f7dfc869ec749c590"
+  },
+  "category": "Living Room",
+  "pname": "L-Shape Lounger",
+  "pdesc": "This premium L-shaped sectional sofa offers spacious seating with a sleek, contemporary design. Upholstered in high-quality fabric, it features plush cushioning and subtle stitching details for enhanced comfort and style",
+  "price": 100000,
+  "qty": 2,
+  "date": "2025-02-27",
+  "photo": "1772171279767.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a131de7dfc869ec749c599"
+  },
+  "category": "Bed Room",
+  "pname": "Storage Trundle Bed",
+  "pdesc": "This luxurious bed combines comfort and smart space-saving design. Featuring a sleek upholstered finish, built-in open shelves for books and decor, and ambient back-lighting, it transforms your bedroom into an elegant sanctuary. The pull-out trundle makes it perfect for guests or cozy family nights, offering both style and functionality in one sophisticated piece.",
+  "price": 68000,
+  "qty": 1,
+  "date": "2025-02-26",
+  "photo": "1772171742927.avif",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a133e57dfc869ec749c59f"
+  },
+  "category": "Dining Room",
+  "pname": "Dinning Table",
+  "pdesc": "A dining table is a piece of furniture designed for eating meals, gathering, and spending time with family and friends. It is usually placed in a dining room or kitchen area and comes in various shapes like rectangular, round, or square. Dining tables are made from materials such as wood, glass, metal, or marble.",
+  "price": 15000,
+  "qty": 5,
+  "date": "2026-02-27",
+  "photo": "1772172261096.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a1344c7dfc869ec749c5a3"
+  },
+  "category": "Office Room",
+  "pname": "Office Table",
+  "pdesc": "An office table is a functional piece of furniture designed for work and productivity. It provides space for a computer, documents, and office supplies. Office tables are usually made of wood, metal, or engineered materials and are designed to offer comfort and organization.",
+  "price": 25000,
+  "qty": 1,
+  "date": "2026-02-22",
+  "photo": "1772172364919.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a135147dfc869ec749c5a7"
+  },
+  "category": "Outdoor",
+  "pname": "Garden Bench",
+  "pdesc": "A garden bench is an outdoor seating furniture placed in gardens, parks, or patios. It is made from materials like wood, metal, or plastic to withstand weather conditions. A garden bench provides a comfortable place to relax and enjoy the natural surroundings.",
+  "price": 5000,
+  "qty": 3,
+  "date": "2025-02-15",
+  "photo": "1772172564431.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a136617dfc869ec749c5ad"
+  },
+  "category": "Kids ",
+  "pname": "Kids Bed",
+  "pdesc": "A kids bed is specially designed for children, offering comfort and safety while sleeping. It often features colorful designs, fun themes, and protective side rails. Kids beds are made from sturdy materials to ensure durability and support for growing children.",
+  "price": 90000,
+  "qty": 4,
+  "date": "2025-02-27",
+  "photo": "1772172897605.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a137367dfc869ec749c5b1"
+  },
+  "category": "Living Room",
+  "pname": "TV Unit",
+  "pdesc": "A TV unit is a stylish piece of furniture designed to hold and support a television. It usually includes shelves or cabinets to store media devices, remote controls, and decorative items. A TV unit enhances the living room’s appearance while keeping the space organized and clutter-free.",
+  "price": 20000,
+  "qty": 3,
+  "date": "2025-12-14",
+  "photo": "1772173110430.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a137857dfc869ec749c5b5"
+  },
+  "category": "Bed Room",
+  "pname": "Walk-in Wardrobe Set",
+  "pdesc": "Organize elegantly with this luxurious walk-in modular wardrobe system featuring premium wooden finishes, open shelving, clothing rails, and drawer storage. Integrated lighting enhances visibility while adding sophistication. Designed for seamless functionality and a clutter-free look, it’s ideal for modern bedrooms, dressing rooms, and premium home spaces seeking high-end organization.",
+  "price": 125000,
+  "qty": 1,
+  "date": "2025-01-20",
+  "photo": "1772173189397.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a137f57dfc869ec749c5b9"
+  },
+  "category": "Dining Room",
+  "pname": "Dinning Chair",
+  "pdesc": "A dining chair is a comfortable seating furniture designed to be used with a dining table. It provides proper support while eating or sitting for long periods. Dining chairs are available in various designs and materials like wood, metal, or cushioned fabric to match home décor.",
+  "price": 30000,
+  "qty": 5,
+  "date": "2025-02-25",
+  "photo": "1772173301366.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a138527dfc869ec749c5bd"
+  },
+  "category": "Office Room",
+  "pname": "Leather Chair",
+  "pdesc": "Experience luxury and comfort with this premium executive office chair, featuring plush padding, ergonomic headrest support, and smooth leather upholstery. The chrome swivel base and adjustable height design ensure superior flexibility and style for modern workspaces.",
+  "price": 20500,
+  "qty": 2,
+  "date": "2025-03-15",
+  "photo": "1772173394324.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a138967dfc869ec749c5c1"
+  },
+  "category": "Outdoor",
+  "pname": "Hanging chair",
+  "pdesc": "Create a magical retreat in your garden with these stylish hanging egg chairs. Designed with woven frames, plush cushions, and warm string lighting, they offer a cozy and romantic outdoor seating experience. Perfect for relaxing evenings, reading, or enjoying nature, these chairs blend comfort, charm, and modern luxury under a beautiful pergola setting.",
+  "price": 10500,
+  "qty": 5,
+  "date": "2025-02-20",
+  "photo": "1772173462591.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a139e97dfc869ec749c5c5"
+  },
+  "category": "Kids ",
+  "pname": "Kids Chair",
+  "pdesc": "A kids chair is specially designed for children to sit comfortably and safely. It is usually lightweight, colorful, and made from durable materials like plastic or wood. Kids chairs are perfect for studying, playing, or dining.",
+  "price": 6000,
+  "qty": 7,
+  "date": "2026-02-28",
+  "photo": "1772173801302.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a13b367dfc869ec749c5cd"
+  },
+  "category": "Living Room",
+  "pname": "Pebble Shape Coffee Table",
+  "pdesc": "A stylish two-tone coffee table blending smooth curves with warm wood texture. Its dual-level organic design makes a modern statement while offering practical serving and décor space. Perfect for living rooms, it pairs beautifully with neutral seating. Minimalist, elegant, and visually striking — ideal for those who love artistic yet functional furniture pieces.",
+  "price": 20000,
+  "qty": 1,
+  "date": "2025-03-07",
+  "photo": "1772174134488.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a13c847dfc869ec749c5d1"
+  },
+  "category": "Bed Room",
+  "pname": "Beside Table",
+  "pdesc": "A bedside table is a small piece of furniture placed next to a bed. It is used to keep essentials like a lamp, books, phone, or alarm clock within easy reach. Bedside tables add both convenience and style to the bedroom.",
+  "price": 15000,
+  "qty": 2,
+  "date": "2025-03-15",
+  "photo": "1772174468412.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a13d767dfc869ec749c5d7"
+  },
+  "category": "Dining Room",
+  "pname": "Sideboard Cabinet",
+  "pdesc": "This modern crockery cabinet features rich wood grain panels paired with soft internal lighting and glass display doors. Designed to organize and flaunt your dinnerware, wine bottles, and décor accents, it adds elegance to dining spaces. Ample storage, sleek finish, and premium craftsmanship make it perfect for contemporary homes that value style and functionality.",
+  "price": 20500,
+  "qty": 1,
+  "date": "2025-02-28",
+  "photo": "1772174710356.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a13db17dfc869ec749c5db"
+  },
+  "category": "Office Room",
+  "pname": "Round Wall Bookshelf",
+  "pdesc": "A stunning circular bookshelf that blends style with function. Crafted with a sleek matte finish, this wall unit beautifully displays books, décor accents, and collectibles. Its modern geometric shape makes it an eye-catching statement piece for living rooms, study areas, or creative spaces. Strong, spacious, and elegant — perfect for those who appreciate artistic and practical storage solutions.",
+  "price": 8500,
+  "qty": 2,
+  "date": "2025-03-20",
+  "photo": "1772174769812.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a13edd7dfc869ec749c5df"
+  },
+  "category": "Outdoor",
+  "pname": "Patio Set",
+  "pdesc": "A patio set is an outdoor furniture collection designed for gardens, balconies, or terraces. It usually includes a table with matching chairs, and sometimes cushions or an umbrella. Patio sets are made from weather-resistant materials like metal, wicker, or plastic. They create a comfortable space for relaxing, dining, or entertaining guests outdoors.",
+  "price": 50000,
+  "qty": 5,
+  "date": "2025-02-02",
+  "photo": "1772175069219.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a1401d7dfc869ec749c5e3"
+  },
+  "category": "Kids ",
+  "pname": "Study Table",
+  "pdesc": "A kids table is specially designed for children to study, play, or do creative activities. It is made in a smaller size to suit their height and comfort. Kids tables are often colorful and made from safe, durable materials like plastic or wood. They provide a perfect space for learning and fun activities.",
+  "price": 20000,
+  "qty": 1,
+  "date": "2025-02-10",
+  "photo": "1772175389982.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a141177dfc869ec749c5e7"
+  },
+  "category": "Living Room",
+  "pname": "Accent Arm Chair",
+  "pdesc": "This stylish modern armchair features a unique ribbed exterior design with a smooth, cushioned interior for maximum comfort. Its curved, barrel-shaped structure provides cozy seating and strong back support. Upholstered in an elegant olive-green tone, it adds a luxurious and contemporary touch to any living space.",
+  "price": 3000,
+  "qty": 10,
+  "date": "2026-01-01",
+  "photo": "1772175639811.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a141617dfc869ec749c5eb"
+  },
+  "category": "Bed Room",
+  "pname": "Dressing Table",
+  "pdesc": "Upgrade your bedroom with this luxurious vanity console featuring a large illuminated round mirror and elegant storage drawers. The soft neutral shade and clean lines add a modern, hotel-style look to your space. Ideal for makeup, grooming, and décor accents, this vanity brings sophistication and convenience while creating a warm, ambient glow with soft LED lighting.",
+  "price": 21500,
+  "qty": 1,
+  "date": "2026-02-17",
+  "photo": "1772175713411.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a141c47dfc869ec749c5ef"
+  },
+  "category": "Dining Room",
+  "pname": "Bar Stool",
+  "pdesc": "This elegant bar trolley blends wood and gold-tone metal for a rich, modern luxe appeal. Featuring three spacious shelves, it neatly displays bottles, glassware, and bar essentials, making it perfect for hosting or home décor. Smooth caster wheels ensure effortless movement, while the warm wooden textures and premium finishes elevate any living space with sophisticated style and functionality.",
+  "price": 2500,
+  "qty": 2,
+  "date": "2025-01-10",
+  "photo": "1772175812752.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a142127dfc869ec749c5f3"
+  },
+  "category": "Office Room",
+  "pname": "Office Storage Cabinet",
+  "pdesc": "A functional and stylish office storage unit featuring a warm walnut finish and matte black paneling. Designed with open shelves, a cabinet compartment, and a flat top support for printers or décor, it helps maintain an organized workspace.",
+  "price": 15500,
+  "qty": 1,
+  "date": "2026-02-12",
+  "photo": "1772175890162.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a143057dfc869ec749c5f7"
+  },
+  "category": "Outdoor",
+  "pname": "Sun Loungers",
+  "pdesc": "Sun loungers are comfortable outdoor chairs designed for relaxing and sunbathing. They usually feature adjustable backrests to provide different reclining positions. Made from weather-resistant materials like wicker, metal, or plastic, they are perfect for poolsides, gardens, or beaches. Sun loungers offer a stylish and relaxing outdoor seating experience.",
+  "price": 1000,
+  "qty": 5,
+  "date": "2026-02-24",
+  "photo": "1772176133516.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a144497dfc869ec749c5fd"
+  },
+  "category": "Kids ",
+  "pname": "Kids Storage Table ",
+  "pdesc": "A kids storage table is a multifunctional furniture piece designed for children to study, play, and organize their items. It features built-in storage compartments or drawers to keep toys, books, and art supplies neatly arranged. Made from safe and durable materials, it is designed at a comfortable height for kids. This table helps maintain a tidy space while encouraging learning and creativity.",
+  "price": 10000,
+  "qty": 1,
+  "date": "2026-02-27",
+  "photo": "1772176457782.jpg",
+  "__v": 0
+}]

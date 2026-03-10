@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "69a12b657dfc869ec749c57a"
+  },
+  "categoryId": "1",
+  "categoryName": "Living Room",
+  "photo": "1772170085879.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a12b897dfc869ec749c57e"
+  },
+  "categoryId": "2",
+  "categoryName": "Bed Room",
+  "photo": "1772170121583.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a12c557dfc869ec749c581"
+  },
+  "categoryId": "3",
+  "categoryName": "Dining Room",
+  "photo": "1772170325312.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a12cc57dfc869ec749c584"
+  },
+  "categoryId": "4",
+  "categoryName": "Office Room",
+  "photo": "1772170437284.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a12d147dfc869ec749c587"
+  },
+  "categoryId": "5",
+  "categoryName": "Outdoor",
+  "photo": "1772170516132.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a12e3f7dfc869ec749c58a"
+  },
+  "categoryId": "6",
+  "categoryName": "Kids ",
+  "photo": "1772170815981.jpg",
+  "__v": 0
+}]

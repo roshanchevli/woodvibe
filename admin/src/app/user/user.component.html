@@ -1,0 +1,68 @@
+<div class="user-panel">
+
+  <div class="panel-header">
+    <h2>User Management</h2>
+  </div>
+
+  <div class="table-container">
+
+    <table class="user-table">
+
+      <thead>
+        <tr>
+          <th>Sr.No</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let user of users; let i = index">
+
+          <td>{{i+1}}</td>
+
+          <td class="user-info">
+            <div class="avatar">{{user.name[0]}}</div>
+            {{user.name}}
+          </td>
+
+          <td>{{user.email}}</td>
+
+          <td>{{user.password}}</td>
+
+          <td>
+            <span 
+              class="status-badge"
+              [class.active]="user.status === 'active'"
+              [class.inactive]="user.status === 'inactive'"
+            >
+              {{user.status}}
+            </span>
+          </td>
+
+          <td>
+
+            <button
+              class="toggle-btn"
+              [class.deactivate]="user.status === 'active'"
+              [class.activate]="user.status === 'inactive'"
+              (click)="toggleStatus(user)"
+            >
+              {{user.status === 'active' ? 'Deactivate' : 'Activate'}}
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

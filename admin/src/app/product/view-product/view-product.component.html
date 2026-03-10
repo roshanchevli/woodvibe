@@ -1,0 +1,132 @@
+<div class="product-container">
+  <div class="product-card">
+    <!-- Header -->
+    <div class="card-header">
+      <h4 class="title">📦 Product List</h4>
+
+      <div class="search-box">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="🔍 Search product..."
+          [(ngModel)]="searchText"
+          (input)="search()"
+        />
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Sr. No</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Photo</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Date</th>
+            <th width="250">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let p of filteredProducts; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <span *ngIf="editId !== p._id">{{ p.pname }}</span>
+              <input *ngIf="editId === p._id" [(ngModel)]="p.pname" class="edit-input" />
+            </td>
+
+            <!-- <td>
+              <span *ngIf="editId !== p._id">{{ p.category }}</span>
+              <input *ngIf="editId === p._id"
+                     [(ngModel)]="p.category"
+                     class="edit-input">
+            </td> -->
+            <td>
+              <!-- Normal Mode -->
+              <span *ngIf="editId !== p._id">{{ p.category }}</span>
+
+              <!-- Edit Mode -->
+              <select *ngIf="editId === p._id" [(ngModel)]="p.category" class="edit-input">
+                <option *ngFor="let c of categories" [value]="c.categoryName">
+                  {{ c.categoryName }}
+                </option>
+              </select>
+            </td>
+
+            <!-- <td>
+              <img
+                *ngIf="p.photo"
+                [src]="'http://localhost:3000/uploads/' + p.photo"
+                class="product-img"
+              />
+            </td> -->
+            <td>
+              <!-- Normal Mode -->
+              <img
+                *ngIf="editId !== p._id && p.photo"
+                [src]="'http://localhost:3000/uploads/' + p.photo"
+                class="product-img"
+              />
+
+              <!-- Edit Mode -->
+              <div *ngIf="editId === p._id">
+                <img
+                  *ngIf="p.photo"
+                  [src]="'http://localhost:3000/uploads/' + p.photo"
+                  class="product-img"
+                />
+                <br /><br />
+                <input type="file" (change)="onFile($event)" />
+              </div>
+            </td>
+
+            <td>
+              <span *ngIf="editId !== p._id">₹{{ p.price }}</span>
+              <input
+                *ngIf="editId === p._id"
+                [(ngModel)]="p.price"
+                type="number"
+                class="edit-input"
+              />
+            </td>
+
+            <td>
+              <span *ngIf="editId !== p._id">{{ p.qty }}</span>
+              <input
+                *ngIf="editId === p._id"
+                [(ngModel)]="p.qty"
+                type="number"
+                class="edit-input"
+              />
+            </td>
+
+            <td>{{ p.date | date }}</td>
+
+            <td>
+              <button *ngIf="editId !== p._id" class="btn edit-btn" (click)="edit(p)">
+                ✏ Edit
+              </button>
+
+              <button *ngIf="editId === p._id" class="btn save-btn" (click)="update(p)">
+                💾 Save
+              </button>
+
+              <button *ngIf="editId === p._id" class="btn cancel-btn" (click)="cancel()">
+                ❌ Cancel
+              </button>
+
+              <button class="btn delete-btn" (click)="delete(p._id)">🗑 Delete</button>
+            </td>
+          </tr>
+
+          <tr *ngIf="filteredProducts.length === 0">
+            <td colspan="7" class="no-data">No products available</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

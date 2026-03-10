@@ -1,0 +1,46 @@
+<div class="container py-5">
+
+    <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="icon">
+      <i class="ri-user-3-line"></i>
+    </div>
+
+    <div class="profile-info">
+      <h4 class="mb-1">{{ user.name }}</h4>
+      <p>Email: {{ user.email }}</p>
+      <p *ngIf="user.contact">Phone: {{ user.contact }}</p>
+    </div>
+  </div>
+
+   <!-- Dashboard Items -->
+  <div class="dashboard">
+
+    <div class="card-box">
+      <i class="ri-shopping-bag-3-line"></i>
+      <div class="card-title">My Orders</div>
+    </div>
+
+    <div class="card-box">
+      <i class="ri-heart-line"></i>
+      <div class="card-title">My Wishlist</div>
+    </div>
+
+    <div class="card-box">
+      <i class="ri-lock-password-line"></i>
+      <div class="card-title">Change Password</div>
+    </div>
+
+    <div class="card-box">
+      <i class="ri-edit-line"></i>
+      <div class="card-title">Edit Profile</div>
+    </div>
+
+  </div>
+
+    <!-- Logout -->
+    <div class="logout-btn">
+    <button (click)="logout()">Logout</button>
+  </div>
+
+</div>

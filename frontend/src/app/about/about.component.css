@@ -1,0 +1,126 @@
+.bg-dark-subtle {
+        background-color: white !important;
+    }
+
+    .about-hero {
+        background: url("/images/main.png") center/cover no-repeat;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+}
+
+.about-hero::after{
+    content:"";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 0.35); /* dark overlay to make text readable */
+}
+
+.about-hero * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Team Image Style */
+.card img {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #e6e6e6;
+    transition: .4s ease;
+    margin: 0 auto;
+}
+
+/* Card Hover */
+.card:hover img {
+    transform: scale(1.07);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card {
+    transition: .4s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.lead{
+    text-align: justify;
+}
+
+/* Blur background image */
+.about-hero {
+    background: url("/images/main.png") center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-size: cover;
+    filter: blur(8px);
+    transform: scale(1.1);
+}
+
+/* Dark Overlay for text readability */
+.about-hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+}
+
+/* Keep text above blur */
+.about-hero * {
+    position: relative;
+    z-index: 3;
+}
+
+
+/* CEO Section Image Fix */
+.ceo-img {
+    height: 550px; /* adjust as needed: try 400–500px */
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* optional for smooth edges */
+}
+.mot{
+    background-color: #f4f1e6;
+}
+.ceo{
+    background-color: #f4f1e6;
+}
+
+/* About  */
+.box {
+	height: 15rem;
+	width: auto;
+}
+
+.card-footer i{
+    color: black;
+}
+
+.card-footer a{
+    text-decoration: none;
+}

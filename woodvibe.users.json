@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "699bfd4d1d1f841438851017"
+  },
+  "name": "nidhi",
+  "email": "nidhi@gmail.com",
+  "password": "$2b$10$xxa/bnS6fso7RTFRHZPCZue55JIRJCsMqGrdD6we1giLjzVqQzD66",
+  "createdAt": {
+    "$date": "2026-02-23T07:10:06.004Z"
+  },
+  "__v": 0
+}]

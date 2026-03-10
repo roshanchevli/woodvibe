@@ -1,0 +1,72 @@
+/* MAIN FOOTER */
+footer {
+    background-color: #9f2a2a;
+    color: #f3f0f0 !important;
+    font-size: 15px;
+}
+
+/* Top Section */
+.footer-top {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Headings */
+footer h5 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* Paragraph text */
+footer p {
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* Links */
+footer a {
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+footer .link-secondary {
+    color: #9c9c9c !important;
+}
+
+footer .link-secondary:hover {
+    color: #ffffff !important;
+    padding-left: 4px;
+}
+
+/* List spacing */
+footer ul li {
+    margin-bottom: 10px;
+}
+
+/* Social links */
+footer .d-flex a {
+    font-size: 14px;
+}
+
+/* Bottom copyright bar */
+footer .bg-dark {
+    background-color: #111 !important;
+}
+
+footer .bg-dark p {
+    font-size: 14px;
+    color: #fefcfc !important;
+}
+
+footer .bg-dark a {
+    font-weight: 500;
+}
+
+/* Responsive spacing */
+@media (max-width: 992px) {
+    footer .col-lg-4,
+    footer .col-lg-3,
+    footer .col-lg-2 {
+        margin-bottom: 30px;
+    }
+}

@@ -1,0 +1,90 @@
+<div class="category-container">
+  <div class="category-card">
+    <div class="card-header">
+      <h4 class="title">📂 Category List</h4>
+
+      <div class="search-box">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="🔍 Search category..."
+          [(ngModel)]="searchText"
+          (input)="search()"
+        />
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="category-table">
+        <thead>
+          <tr>
+            <th>Category ID</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th width="240">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let c of filteredCategories">
+            <td>
+              <span *ngIf="editId !== c._id">{{ c.categoryId }}</span>
+              <input *ngIf="editId === c._id" [(ngModel)]="c.categoryId" class="edit-input" />
+            </td>
+
+            <td>
+              <span *ngIf="editId !== c._id">{{ c.categoryName }}</span>
+              <input *ngIf="editId === c._id" [(ngModel)]="c.categoryName" class="edit-input" />
+            </td>
+
+            <!-- <td class="image-cell">
+              <img
+                [src]="'http://localhost:3000/uploads/' + c.photo" height="70" width="70">
+                
+            </td> -->
+            <td class="image-cell">
+              <!-- Normal Mode -->
+              <img
+                *ngIf="editId !== c._id"
+                [src]="'http://localhost:3000/uploads/' + c.photo"
+                height="70"
+                width="70"
+              />
+
+              <!-- Edit Mode -->
+              <div *ngIf="editId === c._id">
+                <img [src]="'http://localhost:3000/uploads/' + c.photo" height="70" width="70" />
+                <br /><br />
+                <input type="file" (change)="onFile($event)" />
+              </div>
+            </td>
+
+            <td class="actions">
+              <!-- EDIT -->
+              <button *ngIf="editId !== c._id" class="btn edit-btn" (click)="edit(c)">
+                ✏ Edit
+              </button>
+
+              <!-- SAVE -->
+              <button *ngIf="editId === c._id" class="btn save-btn" (click)="update(c)">
+                💾 Save
+              </button>
+
+              <!-- CANCEL -->
+              <button *ngIf="editId === c._id" class="btn cancel-btn" (click)="cancel()">
+                ❌ Cancel
+              </button>
+
+              <!-- DELETE -->
+              <button class="btn delete-btn" (click)="delete(c._id)">🗑 Delete</button>
+            </td>
+          </tr>
+
+          <tr *ngIf="filteredCategories.length === 0">
+            <td colspan="4" class="no-data">No matching category found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

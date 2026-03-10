@@ -1,0 +1,22 @@
+.category-img {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.category .card:hover .category-img {
+  transform: scale(1.1);
+}
+
+.category .card:hover .card-img-overlay > div {
+  background-color: #586750 !important;
+}
+
+.category .card:hover .card-img-overlay > div h6 {
+  color: #fff !important;
+}
+
+.cat {
+  background-color: #f4f1e6;
+}

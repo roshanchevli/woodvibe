@@ -1,0 +1,30 @@
+:root {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+  --primary-color: #8a6d46;
+  --text-dark: #2d2417;
+  --bg-secondary: #f4f1e6;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-color: var(--bg-secondary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-outlet + * {
+  flex: 1;
+}

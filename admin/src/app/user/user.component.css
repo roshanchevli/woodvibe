@@ -1,0 +1,112 @@
+.user-panel{
+padding:30px;
+background:#f8fafc;
+min-height:100vh;
+}
+
+.panel-header h2{
+font-size:26px;
+font-weight:700;
+color:#1e293b;
+margin-bottom:25px;
+}
+
+/* TABLE */
+
+.table-container{
+background:white;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+overflow:hidden;
+}
+
+.user-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.user-table thead{
+background:#1e293b;
+color:white;
+}
+
+.user-table th{
+padding:16px;
+text-align:left;
+font-weight:600;
+}
+
+.user-table td{
+padding:16px;
+border-bottom:1px solid #eee;
+}
+
+.user-table tr:hover{
+background:#f1f5f9;
+}
+
+/* USER INFO */
+
+.user-info{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:500;
+}
+
+.avatar{
+width:35px;
+height:35px;
+background:#6366f1;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-weight:600;
+}
+
+/* STATUS BADGE */
+
+.status-badge{
+padding:5px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
+text-transform:capitalize;
+}
+
+.status-badge.active{
+background:#dcfce7;
+color:#16a34a;
+}
+
+.status-badge.inactive{
+background:#fee2e2;
+color:#dc2626;
+}
+
+/* BUTTON */
+
+.toggle-btn{
+padding:6px 14px;
+border:none;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+transition:0.2s;
+}
+
+.toggle-btn.activate{
+background:#22c55e;
+color:white;
+}
+
+.toggle-btn.deactivate{
+background:#ef4444;
+color:white;
+}
+
+.toggle-btn:hover{
+opacity:0.85;
+}

@@ -1,0 +1,125 @@
+<div class="login-wrapper">
+  <a (click)="goHome()" class="back-home">
+    <span class="arrow">←</span>
+    Back to Home
+  </a>
+
+  <div class="auth-container">
+    <!-- Image Section -->
+    <div class="info-section">
+      <img src="images/chair4.jpg" alt="WoodVibe Studio">
+      <div class="overlay-content">
+        <h1>WoodVibe Studio</h1>
+        <p>Authentic craftsmanship, timeless design, for a home that speaks your vibe.</p>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+
+      <!-- LOGIN FORM -->
+      <div *ngIf="isLogin" class="form-content" data-aos="fade-left">
+        <div class="form-header">
+          <h2>Welcome Back</h2>
+          <p class="switch-text">
+            Don't have an account?
+            <span class="switch-btn" (click)="switchForm('register')">Join the community</span>
+          </p>
+        </div>
+
+        <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="ri-mail-line"></i>
+              <input type="email" name="email" ngModel required placeholder="Email Address">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="ri-lock-2-line"></i>
+              <input type="password" name="password" ngModel required placeholder="Password">
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Continue to Workspace</button>
+        </form>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div *ngIf="!isLogin" class="form-content" data-aos="fade-left">
+        <div class="form-header">
+          <h2>Create Account</h2>
+          <p class="switch-text">
+            Already a member?
+            <span class="switch-btn" (click)="switchForm('login')">Sign In</span>
+          </p>
+        </div>
+
+        <form #regForm="ngForm" (ngSubmit)="registerUser(regForm)">
+          <!-- Name -->
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="ri-user-line"></i>
+              <input type="text" name="name" ngModel #name="ngModel" required minlength="3" placeholder="Full Name">
+            </div>
+            <div class="error-msg" *ngIf="name.invalid && name.touched">
+              <i class="ri-error-warning-line"></i> Name must be at least 3 characters
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="ri-mail-line"></i>
+              <input type="email" name="email" ngModel #email="ngModel" required email placeholder="Email Address">
+            </div>
+            <div class="error-msg" *ngIf="email.invalid && email.touched">
+              <i class="ri-error-warning-line"></i> Enter valid email address
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="ri-phone-line"></i>
+              <input type="text" name="phone" ngModel #phone="ngModel" required pattern="^[0-9]{10}$"
+                placeholder="Phone Number">
+            </div>
+            <div class="error-msg" *ngIf="phone.invalid && phone.touched">
+              <i class="ri-error-warning-line"></i> Phone must be exactly 10 digits
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="ri-lock-2-line"></i>
+              <input type="password" name="password" ngModel #password="ngModel" required minlength="6"
+                placeholder="Create Password">
+            </div>
+            <div class="error-msg" *ngIf="password.invalid && password.touched">
+              <i class="ri-error-warning-line"></i> Minimum 6 characters
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="ri-lock-2-line"></i>
+              <input type="password" name="confirm" ngModel #confirm="ngModel" required placeholder="Confirm Password">
+            </div>
+            <div class="error-msg" *ngIf="confirm.touched && password.value !== confirm.value">
+              <i class="ri-error-warning-line"></i> Passwords do not match
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="regForm.invalid || password.value !== confirm.value">
+            Create My Account
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

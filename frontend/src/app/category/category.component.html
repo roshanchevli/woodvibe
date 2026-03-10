@@ -1,0 +1,31 @@
+<div class="cat">
+  <div class="category">
+    <div class="container py-4">
+      <h2 class="fw-bold mb-4">CATEGORY</h2>
+
+      <div class="row g-4">
+<div class="col-lg-4 col-12" *ngFor="let c of categories">
+  <div
+    class="card border-0 rounded-0 overflow-hidden mb-4"
+    style="cursor:pointer"
+    (click)="openCategory(c.categoryName)"
+  >
+    <img
+      *ngIf="c.photo"
+      [src]="'http://localhost:3000/uploads/' + c.photo"
+      class="card-img-top category-img"
+    />
+
+    <div class="card-img-overlay d-flex align-items-end p-0">
+      <div class="bg-white w-50 p-4">
+        <h6 class="fw-bold mb-0">
+          {{ c.categoryName }}
+        </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

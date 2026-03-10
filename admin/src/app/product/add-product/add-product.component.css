@@ -1,0 +1,107 @@
+/* Container */
+.product-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Card */
+.product-card {
+    width: 100%;
+    max-width: 650px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* Header same as sidebar color */
+.card-header {
+    background: linear-gradient(180deg, #111827, #1e293b);
+    color: white;
+    padding: 18px;
+    text-align: center;
+}
+
+.card-header h4 {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Body */
+.card-body {
+    padding: 30px;
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #334155;
+    font-weight: 500;
+}
+
+/* Inputs */
+.form-control {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    border-color: #1e293b;
+    box-shadow: 0 0 0 2px rgba(30,41,59,0.1);
+    outline: none;
+}
+
+/* Row layout */
+.row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button */
+.save-btn {
+    width: 100%;
+    padding: 12px;
+    background: #1e293b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.save-btn:hover {
+    background: #334155;
+    transform: translateY(-2px);
+}
+select.form-control {
+    color: #1e293b;   /* dark text */
+    background-color: #ffffff;
+}
+
+select.form-control option {
+    color: #1e293b;
+}
+select.form-control:invalid {
+    color: #94a3b8;  /* light gray */
+}
