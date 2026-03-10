@@ -48,11 +48,17 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/productdetails', id]);
   }
 
-  closeMenu(){
-  const menu = document.querySelector('.mega-dropdown') as HTMLElement;
-  if(menu){
-    menu.style.display = 'none';
+  closeMenu() {
+    const megaMenuContainer = document.querySelector('.mega-menu') as HTMLElement;
+    if (megaMenuContainer) {
+      // Apply a class that forces the menu closed regardless of hover state
+      megaMenuContainer.classList.add('force-closed');
+
+      // Remove the class after a short delay so the menu can be opened again on next hover
+      setTimeout(() => {
+        megaMenuContainer.classList.remove('force-closed');
+      }, 500);
+    }
   }
-}
 
 }

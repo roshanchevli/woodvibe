@@ -1,41 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-productdetails',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgIf],
   templateUrl: './productdetails.component.html',
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit {
 
-  product: any;
+  product: any = null;
 
   constructor(
     private route: ActivatedRoute,
-    private api: ApiService
+    private api: ApiService,
+    private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      console.log("Current Route Product ID:", id);
 
-  this.route.paramMap.subscribe(params => {
-
-    const id = params.get('id');
-
-    console.log("Route ID:", id);
-
-    if(id){
-      this.api.getProductById(id).subscribe(data=>{
-        console.log("Product Data:", data);
-        this.product = data;
-      });
-    }
-
-  });
-
-}
+      if (id) {
+        this.api.getProductById(id).subscribe({
+          next: (data) => {
+            if (data) {
+              console.log("Product data successfully loaded:", data);
+              this.product = data;
+              
+              // Force Angular to check for changes
+              this.cdr.detectChanges();
+              
+              // Refresh AOS animations since new elements are added to DOM
+              setTimeout(() => {
+                if (typeof (window as any).AOS !== 'undefined') {
+                  (window as any).AOS.refresh();
+                }
+              }, 100);
+            } else {
+              console.warn("API returned empty data for ID:", id);
+            }
+          },
+          error: (err) => {
+            console.error("Critical error while fetching product:", err);
+          }
+        });
+      }
+    });
+  }
 
 }

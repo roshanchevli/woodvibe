@@ -9,38 +9,25 @@
 </section>
 
 <!-- Product Section -->
-<section class="product-section">
+<section class="product-section" id="product-list">
   <div class="container">
     <div class="spotlight-tag" data-aos="fade-up">Handpicked For You</div>
     <h2 class="section-title" data-aos="fade-up">Discover Our Pieces</h2>
 
     <div class="filter-container" data-aos="fade-up">
       <div class="filters">
-        <button
-          class="filter-btn"
-          [class.active]="selectedCategory === 'All'"
-          (click)="filterProducts('All')"
-        >
+        <button class="filter-btn" [class.active]="selectedCategory === 'All'" (click)="filterProducts('All')">
           All Collection
         </button>
-        <button
-          *ngFor="let cat of categories"
-          class="filter-btn"
-          [class.active]="selectedCategory === cat.categoryName"
-          (click)="filterProducts(cat.categoryName)"
-        >
+        <button *ngFor="let cat of categories" class="filter-btn" [class.active]="selectedCategory === cat.categoryName"
+          (click)="filterProducts(cat.categoryName)">
           {{ cat.categoryName }}
         </button>
       </div>
 
       <div class="search-box-wrapper">
         <i class="ri-search-line search-icon"></i>
-        <input
-          type="text"
-          class="search-box"
-          placeholder="Search our catalog..."
-          (input)="onSearch($event)"
-        />
+        <input type="text" class="search-box" placeholder="Search our catalog..." (input)="onSearch($event)" />
       </div>
     </div>
 
@@ -56,19 +43,13 @@
       </div>
 
       <!-- Product Card -->
-      <div
-        class="product-card"
-        *ngFor="let p of filteredProducts; let i = index"
-        [attr.data-aos]="'fade-up'"
-        [attr.data-aos-delay]="(i % 4) * 100"
-      >
+      <div class="product-card" *ngFor="let p of filteredProducts; let i = index" [attr.data-aos]="'fade-up'"
+        [attr.data-aos-delay]="(i % 4) * 100">
         <div class="product-badge" *ngIf="i % 5 === 0">New Arrival</div>
 
         <div class="image-container">
-          <img
-            [src]="p.photo ? 'http://localhost:3000/uploads/' + p.photo : '/images/placeholder.png'"
-            alt="{{ p.pname }}"
-          />
+          <img [src]="p.photo ? 'http://localhost:3000/uploads/' + p.photo : '/images/placeholder.png'"
+            alt="{{ p.pname }}" />
         </div>
 
         <div class="product-info">

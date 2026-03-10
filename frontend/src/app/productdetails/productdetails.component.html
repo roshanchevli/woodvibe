@@ -1,40 +1,63 @@
 <div class="product-details" *ngIf="product">
-
   <div class="container">
-
-    <div class="row">
-
-      <div class="col-md-6">
-
-        <img
-          [src]="'http://localhost:3000/uploads/' + product.photo"
-          class="product-img"
-        />
-
+    <div class="row g-5">
+      <!-- Left: Product Image Section -->
+      <div class="col-lg-7">
+        <div class="product-image-section" data-aos="fade-right">
+          <img [src]="product.photo ? 'http://localhost:3000/uploads/' + product.photo : '/images/placeholder.png'"
+            class="product-img shadow-lg" alt="{{ product.pname }}" />
+        </div>
       </div>
 
-      <div class="col-md-6">
+      <!-- Right: Product Info Section -->
+      <div class="col-lg-5">
+        <div class="product-info-section" data-aos="fade-left">
+          <span class="category-badge">{{ product.category }}</span>
+          <h2>{{ product.pname }}</h2>
 
-        <h2>{{ product.pname }}</h2>
+          <div class="price">
+            <i class="ri-money-rupee-circle-line"></i>
+            <span>{{ product.price | number }}</span>
+          </div>
 
-        <h4 class="price">₹ {{ product.price }}</h4>
+          <p class="desc">
+            {{ product.pdesc }}
+          </p>
 
-        <p class="desc">
-          {{ product.pdesc }}
-        </p>
+          <div class="actions">
+            <button class="buy-btn">
+              <i class="ri-shopping-cart-2-line me-2"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" title="Add to Wishlist">
+              <i class="ri-heart-line"></i>
+            </button>
+          </div>
 
-        <p>
-          <strong>Category:</strong> {{ product.category }}
-        </p>
-
-        <button class="buy-btn">
-          Add to Cart
-        </button>
-
+          <!-- Features List -->
+          <div class="features-list">
+            <div class="feature-item">
+              <i class="ri-truck-line"></i>
+              <span>Free delivery on orders above ₹5,000</span>
+            </div>
+            <div class="feature-item">
+              <i class="ri-shield-check-line"></i>
+              <span>2 Year Woodvibe Warranty</span>
+            </div>
+            <div class="feature-item">
+              <i class="ri-refresh-line"></i>
+              <span>30-Day easy return policy</span>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
-
   </div>
+</div>
 
+<!-- Loading State (Optional) -->
+<div *ngIf="!product" class="container py-5 text-center">
+  <div class="spinner-border text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <p class="mt-3 text-muted">Carving your product details...</p>
 </div>

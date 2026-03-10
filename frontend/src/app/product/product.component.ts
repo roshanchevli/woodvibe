@@ -6,12 +6,11 @@ import { Router } from '@angular/router';
 
 declare var AOS: any;
 
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -27,28 +26,11 @@ export class ProductComponent implements OnInit {
   constructor(private api: ApiService, private cdr: ChangeDetectorRef, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-
-  this.route.params.subscribe(params => {
-
-    const category = params['category'];
-
-    if (category) {
-
-      this.api.getProductsByCategory(category).subscribe(data => {
-        this.products = data;
-      });
-
-      console.log("Category:", category);
-
-    } else {
-
+    this.route.params.subscribe(params => {
+      this.category = params['category'] || '';
       this.loadData();
-
-    }
-
-  });
-
-}
+    });
+  }
 
   loadData() {
     // Fetch Categories
@@ -64,6 +46,14 @@ export class ProductComponent implements OnInit {
     this.api.getProducts().subscribe({
       next: (data: any[]) => {
         this.products = data;
+        
+        // Use the category from the route if it exists, otherwise default to "All"
+        if (this.category) {
+          this.selectedCategory = this.category;
+        } else {
+          this.selectedCategory = 'All';
+        }
+        
         this.filterProducts();
         this.cdr.detectChanges();
         setTimeout(() => {
@@ -85,6 +75,19 @@ export class ProductComponent implements OnInit {
       const matchSearch = p.pname.toLowerCase().includes(this.searchQuery.toLowerCase());
       return matchCategory && matchSearch;
     });
+
+    // Scroll to the product category navbar instead of the very top
+    const productList = document.getElementById('product-list');
+    if (productList) {
+      const headerOffset = 100; // Adjust based on your sticky header height
+      const elementPosition = productList.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
     
     this.cdr.detectChanges();
     setTimeout(() => {

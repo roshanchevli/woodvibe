@@ -39,6 +39,22 @@ export class AppComponent implements OnInit {
 
         const currentUrl = event.urlAfterRedirects;
 
+        // Custom scroll behavior for product categories
+        if (currentUrl.includes('/products/')) {
+          setTimeout(() => {
+            const productList = document.getElementById('product-list');
+            if (productList) {
+              const headerOffset = 100;
+              const elementPosition = productList.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          }, 100);
+        } else {
+          // Default scroll to top for other pages
+          window.scrollTo(0, 0);
+        }
+
         // Hide header & footer on login page
         this.showLayout = !currentUrl.includes('/login');
 
