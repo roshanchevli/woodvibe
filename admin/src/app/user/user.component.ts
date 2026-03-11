@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
         this.loading = false;
       },
 
-      error: (err) => {
+      error: (err: any) => {
         console.error("Error fetching users:", err);
         this.loading = false;
       }
@@ -52,7 +52,7 @@ export class UserComponent implements OnInit {
         user.status = newStatus;
       },
 
-      error: (err) => {
+      error: (err: any) => {
         console.error("Status update failed:", err);
       }
 
