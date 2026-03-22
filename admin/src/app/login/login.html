@@ -1,128 +1,84 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<div class="login-wrapper">
 
-<div class="login-page">
-
-  <!-- Animated Background -->
-  <div class="bg-blob blob-1"></div>
-  <div class="bg-blob blob-2"></div>
-  <div class="bg-blob blob-3"></div>
-
-  <div class="split-container">
-
-    <!-- LEFT SIDE -->
-    <div class="brand-side">
-      <div class="brand-content">
-
-        <div class="logo-circle">
-          <i class="fas fa-crown"></i>
+  <div class="auth-container">
+    
+    <!-- Form Section (Now on the Left in Desktop via CSS flex-direction: row-reverse) -->
+    <div class="form-section">
+      <div class="form-content">
+        <div class="form-header">
+          <h2>Admin Login</h2>
+          <p>Secure authentication for management personnel</p>
         </div>
-
-        <h1 class="brand-title">
-          Admin<span>Panel</span>
-        </h1>
-
-        <p class="brand-tagline">
-          Advanced Management Environment
-        </p>
-
-        <div class="feature-pills">
-          <span class="pill"><i class="fas fa-shield-check"></i> Secure</span>
-          <span class="pill"><i class="fas fa-bolt"></i> Fast</span>
-          <span class="pill"><i class="fas fa-chart-line"></i> Analytics</span>
-        </div>
-
-      </div>
-    </div>
-
-
-    <!-- RIGHT SIDE -->
-    <div class="form-side">
-
-      <div class="login-card">
-
-        <div class="card-header">
-          <h2>Welcome Back</h2>
-          <p>Please login to continue</p>
-        </div>
-
 
         <div class="form-body">
-
-          <!-- EMAIL -->
-          <div class="form-group" [class.error]="errorMessage && !email">
-
-            <label>Email Address</label>
-
-            <div class="input-container">
-              <i class="fas fa-at icon"></i>
-
-              <input
-                type="email"
-                [(ngModel)]="email"
-                placeholder="yours@example.com"
-                (keyup.enter)="login()">
-
-            </div>
-          </div>
-
-
-          <!-- PASSWORD -->
-          <div class="form-group" [class.error]="errorMessage && !password">
-
-            <label>Password</label>
-
-            <div class="input-container">
-
-              <i class="fas fa-lock icon"></i>
-
-              <input
-                [type]="showPassword ? 'text' : 'password'"
-                [(ngModel)]="password"
-                placeholder="••••••••"
-                (keyup.enter)="login()">
-
-              <button
-                type="button"
-                class="visibility-btn"
-                (click)="showPassword = !showPassword">
-
-                <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
-
-              </button>
-
-            </div>
-          </div>
-
-
-          <!-- ERROR -->
+          <!-- ERROR ALERT -->
           <div class="error-msg" *ngIf="errorMessage">
-            <i class="fas fa-triangle-exclamation"></i>
+            <i class="ri-error-warning-line"></i>
             <span>{{ errorMessage }}</span>
           </div>
 
-
-          <!-- BUTTON -->
-          <button class="submit-btn" (click)="login()" [disabled]="isLoading">
-
-            <span *ngIf="!isLoading">
-              Login <i class="fas fa-arrow-right"></i>
-            </span>
-
-            <div class="loading-dots" *ngIf="isLoading">
-              <span></span><span></span><span></span>
+          <!-- LOGIN FORM -->
+          <form (ngSubmit)="login()">
+            
+            <!-- EMAIL SECTION -->
+            <div class="form-group">
+              <label>Email Address</label>
+              <div class="input-container">
+                <i class="ri-mail-line icon"></i>
+                <input
+                  type="email"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+                  placeholder="admin@woodvibe.com"
+                  (keyup.enter)="login()">
+              </div>
             </div>
 
-          </button>
+            <!-- PASSWORD SECTION -->
+            <div class="form-group">
+              <label>Password</label>
+              <div class="input-container">
+                <i class="ri-lock-2-line icon"></i>
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  [(ngModel)]="password"
+                  name="password"
+                  required
+                  placeholder="••••••••"
+                  (keyup.enter)="login()">
+                
+                <button
+                  type="button"
+                  class="visibility-btn"
+                  (click)="showPassword = !showPassword">
+                  <i [ngClass]="showPassword ? 'ri-eye-off-line' : 'ri-eye-line'"></i>
+                </button>
+              </div>
+            </div>
 
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" class="submit-btn" [disabled]="isLoading">
+              <span *ngIf="!isLoading">
+                Authorize Access <i class="ri-shield-keyhole-line"></i>
+              </span>
+              <div class="loading-dots" *ngIf="isLoading">
+                <span></span><span></span><span></span>
+              </div>
+            </button>
+
+          </form>
         </div>
-
-
-        <div class="card-footer">
-          <p>© 2026 Enterprise Solutions</p>
-        </div>
-
       </div>
+    </div>
 
+    <!-- Image Section (Now on the Right) -->
+    <div class="info-section">
+      <img src="images/office1.webp" alt="WoodVibe Admin">
+      <div class="overlay-content">
+        <h1>Workspace Console</h1>
+        <p>Curating the finest woodwork. Managed by craftsmanship.</p>
+      </div>
     </div>
 
   </div>

@@ -1,80 +1,107 @@
 <form #productForm="ngForm" (ngSubmit)="save(productForm)">
   <div class="product-container">
-    <div class="product-card">
+    <div class="product-card" data-aos="fade-up">
       <div class="card-header">
-        <h4>📦 Add Product</h4>
+        <h4 class="title"><i class="ri-box-3-line"></i> Add Product</h4>
+        <p class="subtitle">Add a new premium piece to the WoodVibe catalog.</p>
       </div>
 
       <div class="card-body">
         <!-- Category -->
-        <div class="form-group">
+        <div class="form-group" data-aos="fade-up" data-aos-delay="50">
           <label>Category</label>
-          <select class="form-control" [(ngModel)]="product.category" name="category" required>
-            <option value="" disabled>Select Category</option>
-            <option *ngFor="let c of categories" [value]="c.categoryName">
-              {{ c.categoryName }}
-            </option>
-          </select>
+          <div class="input-wrapper">
+             <i class="ri-folder-open-line"></i>
+             <select class="form-control" [(ngModel)]="product.category" name="category" required>
+              <option value="" disabled>Select Category</option>
+              <option *ngFor="let c of categories" [value]="c.categoryName">
+                {{ c.categoryName }}
+              </option>
+            </select>
+            <i class="ri-arrow-down-s-line select-arrow"></i>
+          </div>
         </div>
 
         <!-- Product Name -->
-        <div class="form-group">
+        <div class="form-group" data-aos="fade-up" data-aos-delay="100">
           <label>Product Name</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="product.pname"
-            name="pname"
-            required
-          />
+          <div class="input-wrapper">
+            <i class="ri-price-tag-3-line"></i>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="product.pname"
+              name="pname"
+              placeholder="e.g. Classic Oak Dining Table"
+              required
+            />
+          </div>
         </div>
 
         <!-- Description -->
-        <div class="form-group">
+        <div class="form-group" data-aos="fade-up" data-aos-delay="150">
           <label>Description</label>
-          <textarea class="form-control" rows="3" [(ngModel)]="product.pdesc" name="pdesc">
-          </textarea>
+          <div class="input-wrapper text-area-wrapper">
+            <i class="ri-file-text-line"></i>
+            <textarea class="form-control" rows="3" [(ngModel)]="product.pdesc" name="pdesc" placeholder="Detail the craftsmanship...">
+            </textarea>
+          </div>
         </div>
 
         <!-- Price & Quantity -->
         <div class="row">
-          <div class="col">
-            <label>Price</label>
-            <input
-              type="number"
-              class="form-control"
-              [(ngModel)]="product.price"
-              name="price"
-              required
-            />
+          <div class="col form-group" data-aos="fade-up" data-aos-delay="200">
+            <label>Price (₹)</label>
+            <div class="input-wrapper">
+               <i class="ri-money-rupee-circle-line"></i>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="product.price"
+                name="price"
+                placeholder="0.00"
+                required
+              />
+            </div>
           </div>
 
-          <div class="col">
+          <div class="col form-group" data-aos="fade-up" data-aos-delay="250">
             <label>Quantity</label>
-            <input
-              type="number"
-              class="form-control"
-              [(ngModel)]="product.qty"
-              name="qty"
-              required
-            />
+            <div class="input-wrapper">
+              <i class="ri-stack-line"></i>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="product.qty"
+                name="qty"
+                placeholder="Available stock"
+                required
+              />
+            </div>
           </div>
         </div>
 
         <!-- Date -->
-        <div class="form-group">
-          <label>Date</label>
-          <input type="date" class="form-control" [(ngModel)]="product.date" name="date" required />
+        <div class="form-group" data-aos="fade-up" data-aos-delay="300">
+          <label>Date Added</label>
+          <div class="input-wrapper">
+            <input type="date" class="form-control" [(ngModel)]="product.date" name="date" required />
+          </div>
         </div>
 
         <!-- Photo -->
-        <div class="form-group">
+        <div class="form-group" data-aos="fade-up" data-aos-delay="350">
           <label>Product Image</label>
-          <input type="file" class="form-control" #fileInput (change)="onFile($event)" />
+          <div class="input-wrapper file-wrapper">
+            <i class="ri-image-add-line"></i>
+            <input type="file" class="form-control file-input" #fileInput (change)="onFile($event)" />
+          </div>
         </div>
 
         <!-- Button -->
-        <button class="save-btn" type="submit">💾 Save Product</button>
+        <button class="save-btn" type="submit" data-aos="fade-up" data-aos-delay="400">
+          Save Product <i class="ri-arrow-right-line"></i>
+        </button>
       </div>
     </div>
   </div>

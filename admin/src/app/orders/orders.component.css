@@ -1,0 +1,153 @@
+/* Container */
+.orders-page {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    color: #2d2417;
+}
+
+/* Card */
+.orders-card {
+    width: 100%;
+    max-width: 1250px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Header */
+.card-header {
+    padding: 24px 35px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.card-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+
+.card-header i {
+    color: #c29d6d;
+    font-size: 28px;
+    background: rgba(194, 157, 109, 0.1);
+    padding: 8px;
+    border-radius: 12px;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Table */
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+/* Table Header */
+.orders-table thead {
+    background: #faf9f6;
+    border-bottom: 2px solid #eae1d6;
+}
+
+.orders-table th {
+    padding: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #7a6b57;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+/* Table Cells */
+.orders-table td {
+    padding: 20px;
+    text-align: center;
+    color: #2d2417;
+    border-bottom: 1px solid #f0eee9;
+    vertical-align: middle;
+}
+
+/* Striped Rows */
+.orders-table tbody tr {
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+}
+
+.orders-table tbody tr:hover {
+    background-color: #faf9f6;
+}
+
+/* Typography styles */
+.id-badge {
+    background: rgba(194, 157, 109, 0.1);
+    color: #a8855a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.name-text {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1a1a1a;
+}
+
+.email-text {
+    font-size: 14px;
+    color: #b0a596;
+}
+
+.product-text {
+    font-weight: 500;
+    color: #2d2417;
+}
+
+.price-text {
+    font-weight: 700;
+    color: #c29d6d;
+}
+
+.date-text {
+    font-size: 14px;
+    color: #7a6b57;
+    white-space: nowrap;
+}
+
+/* VIEW BUTTON */
+.view-btn {
+    background: linear-gradient(135deg, #c29d6d, #a8855a);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.view-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(194, 157, 109, 0.3);
+    filter: brightness(1.05);
+}

@@ -1,0 +1,171 @@
+<div class="checkout-page">
+  <div class="container py-5">
+
+    <!-- BREADCRUMB -->
+   
+
+    <div class="checkout-grid">
+
+      <!-- LEFT: FORM -->
+      <div class="form-section">
+
+        <!-- CONTACT -->
+        <div class="form-card">
+          <div class="card-header-row">
+            <div class="step-number">1</div>
+            <h3>Contact Information</h3>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <div class="input-icon-wrap">
+              <i class="ri-mail-line"></i>
+              <input type="email" class="checkout-input" placeholder="you@example.com" [(ngModel)]="email">
+            </div>
+          </div>
+        </div>
+
+        <!-- BILLING -->
+        <div class="form-card">
+          <div class="card-header-row">
+            <div class="step-number">2</div>
+            <h3>Billing Address</h3>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <div class="input-icon-wrap">
+                <i class="ri-user-line"></i>
+                <input type="text" class="checkout-input" placeholder="First name" [(ngModel)]="fname">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <div class="input-icon-wrap">
+                <i class="ri-user-line"></i>
+                <input type="text" class="checkout-input" placeholder="Last name" [(ngModel)]="lname">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Street Address</label>
+            <div class="input-icon-wrap">
+              <i class="ri-map-pin-line"></i>
+              <input type="text" class="checkout-input" placeholder="123 Main Street" [(ngModel)]="address">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">City</label>
+              <div class="input-icon-wrap">
+                <i class="ri-building-line"></i>
+                <input type="text" class="checkout-input" placeholder="City" [(ngModel)]="city">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">State</label>
+              <div class="input-icon-wrap">
+                <i class="ri-government-line"></i>
+                <select class="checkout-input checkout-select" [(ngModel)]="state">
+                  <option>Gujarat</option>
+                  <option>Maharashtra</option>
+                  <option>Delhi</option>
+                  <option>Rajasthan</option>
+                  <option>Karnataka</option>
+                  <option>Tamil Nadu</option>
+                  <option>Uttar Pradesh</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">PIN Code</label>
+              <div class="input-icon-wrap">
+                <i class="ri-hashtag"></i>
+                <input type="text" class="checkout-input" placeholder="380001" [(ngModel)]="pincode">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <div class="input-icon-wrap">
+                <i class="ri-phone-line"></i>
+                <input type="text" class="checkout-input" placeholder="+91 XXXXX XXXXX" [(ngModel)]="phone">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLACE ORDER BUTTON -->
+        <button (click)="placeOrder()" class="place-order-btn">
+          <i class="ri-shield-check-line"></i> Place Order — ₹{{ total | number }}
+        </button>
+        <p class="secure-text"><i class="ri-lock-line"></i> Secured with SSL encryption</p>
+
+      </div>
+
+      <!-- RIGHT: ORDER SUMMARY -->
+      <div class="summary-section">
+        <div class="summary-card">
+
+          <h4 class="summary-heading">Order Summary</h4>
+          <p class="summary-subtitle">{{ cart.length }} item{{ cart.length > 1 ? 's' : '' }}</p>
+
+          <div class="summary-items">
+            <div class="order-item" *ngFor="let c of cart">
+              <div class="item-image-wrap">
+                <img [src]="'http://localhost:3000/uploads/'+c.photo" alt="{{c.pname}}">
+                <span class="item-qty-badge">{{ c.qty }}</span>
+              </div>
+              <div class="item-details">
+                <p class="item-name">{{ c.pname }}</p>
+                <p class="item-price-small">₹{{ c.price }} × {{ c.qty }}</p>
+              </div>
+              <b class="item-total">₹{{ c.price * c.qty | number }}</b>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>₹{{ subtotal | number }}</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span class="shipping-tag">₹{{ shipping }}</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="summary-row total-row">
+            <span>Total</span>
+            <span class="total-price">₹{{ total | number }}</span>
+          </div>
+
+          <!-- TRUST BADGES -->
+          <div class="trust-badges">
+            <div class="badge-item">
+              <i class="ri-truck-line"></i>
+              <span>Free shipping on ₹5000+</span>
+            </div>
+            <div class="badge-item">
+              <i class="ri-shield-check-line"></i>
+              <span>Secure checkout</span>
+            </div>
+            <div class="badge-item">
+              <i class="ri-refresh-line"></i>
+              <span>30-day returns</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

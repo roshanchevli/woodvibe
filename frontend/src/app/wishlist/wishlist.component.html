@@ -1,0 +1,77 @@
+<div class="wishlist-page">
+  <div class="container">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="header-left">
+        <a routerLink="/product" class="back-link">
+          <i class="ri-arrow-left-line"></i> Back to Shopping
+        </a>
+      </div>
+      <div class="header-center">
+        <h2 class="page-title">
+           My Wishlist
+        </h2>
+        <p class="item-count" *ngIf="wishlist.length > 0">
+          {{ wishlist.length }} item{{ wishlist.length > 1 ? 's' : '' }} saved
+        </p>
+      </div>
+      <div class="header-right"></div>
+    </div>
+
+    <!-- WISHLIST GRID -->
+    <div class="wishlist-grid" *ngIf="wishlist.length > 0">
+
+      <div class="wishlist-card" *ngFor="let w of wishlist; let i = index"
+        [attr.data-aos]="'fade-up'"
+        [attr.data-aos-delay]="i * 100"
+      >
+        <!-- REMOVE BUTTON (Top-Right) -->
+        <button class="remove-icon" (click)="remove(w._id)" title="Remove from wishlist">
+          <i class="ri-close-line"></i>
+        </button>
+
+        <!-- IMAGE -->
+        <div class="card-image-wrapper">
+          <img
+            [src]="'http://localhost:3000/uploads/' + w.photo"
+            class="card-image"
+            alt="{{w.pname}}"
+          />
+          <div class="image-overlay">
+            <a [routerLink]="['/productdetails', w.pid]" class="view-btn">
+              <i class="ri-eye-line"></i> View Details
+            </a>
+          </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="card-info">
+          <h5 class="product-name">{{ w.pname }}</h5>
+          <p class="product-price">₹ {{ w.price | number }}</p>
+
+          <button class="add-cart-btn" (click)="addToCart(w)">
+            <i class="ri-shopping-cart-line"></i> Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" *ngIf="wishlist.length === 0">
+      <div class="empty-card">
+        <div class="empty-icon-wrapper">
+          <i class="ri-heart-line"></i>
+        </div>
+        <h3>Your wishlist is empty</h3>
+        <p>Start adding items you love to your wishlist. They'll show up here for easy access.</p>
+        <a routerLink="/product" class="shop-now-btn">
+          <i class="ri-shopping-bag-line"></i> Continue Shopping
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

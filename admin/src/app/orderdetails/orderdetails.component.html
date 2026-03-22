@@ -1,0 +1,80 @@
+<div class="center-item">
+  <div class="details-page" *ngIf="order" data-aos="fade-up">
+
+    <div class="page-header">
+      <button class="back-btn" routerLink="/orders">
+        <i class="ri-arrow-left-line"></i> Back to Orders
+      </button>
+      <h2 class="page-title"><i class="ri-file-list-3-line"></i> Order Details</h2>
+    </div>
+
+    <div class="details-card">
+      <div class="details-grid">
+        
+        <!-- LEFT SIDE -->
+        <div class="left-section">
+          
+          <!-- CUSTOMER -->
+          <div class="section">
+            <h3 class="section-title"><i class="ri-user-settings-line"></i> Customer Information</h3>
+            <div class="info-group">
+              <p><b>Name:</b> {{ order.user.fname }} {{ order.user.lname }}</p>
+              <p><b>Email:</b> {{ order.user.email }}</p>
+              <p><b>Phone:</b> {{ order.mobile || 'N/A' }}</p>
+              <p class="address">
+                <b>Address:</b> {{ order.address || 'N/A' }}, {{ order.city }} - {{ order.pincode }}
+              </p>
+            </div>
+          </div>
+
+          <!-- STATUS -->
+          <div class="section" style="border-bottom: none;">
+            <h3 class="section-title"><i class="ri-truck-line"></i> Update Status</h3>
+            <div class="status-box">
+              <div class="input-wrapper">
+                <select [(ngModel)]="order.status" class="status-select">
+                  <option>Pending</option>
+                  <option>Shipped</option>
+                  <option>Delivered</option>
+                </select>
+                <i class="ri-arrow-down-s-line select-arrow"></i>
+              </div>
+              <button class="update-btn" (click)="updateStatus()">Update Status</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="right-section">
+          
+          <!-- PRODUCT -->
+          <div class="section">
+            <h3 class="section-title"><i class="ri-shopping-cart-2-line"></i> Product Information</h3>
+            <div class="product-box">
+              <img [src]="'http://localhost:3000/uploads/' + order.photo" alt="{{ order.pname }}" />
+              <div class="product-details">
+                <p class="product-name">{{ order.pname }}</p>
+                <p class="product-qty">Qty: <b>{{ order.qty }}</b></p>
+                <p class="product-price">Price: <b>₹{{ order.price }}</b></p>
+                <div class="divider"></div>
+                <p class="subtotal">Subtotal: <span>₹{{ order.price * order.qty }}</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAYMENT -->
+          <div class="section" style="border-bottom: none;">
+            <h3 class="section-title"><i class="ri-bank-card-line"></i> Payment Summary</h3>
+            <div class="payment-info">
+              <p class="shipping-fee"><span>Shipping Fee:</span> <span>₹50</span></p>
+              <div class="divider"></div>
+              <p class="total"><span>Total Amount:</span> <span class="total-amount">₹{{ order.price * order.qty + 50 }}</span></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

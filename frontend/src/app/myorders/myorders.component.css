@@ -1,0 +1,215 @@
+/* PAGE WRAPPER */
+.orders-page {
+    background-color: #f4f1e6;
+    min-height: 100vh;
+}
+
+/* HEADER */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #2d2417;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #a3947c;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* BACK LINK */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #8a6d46;
+    font-weight: 600;
+    text-decoration: none;
+    background: #fff;
+    padding: 10px 22px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.back-link:hover {
+    transform: translateX(-5px);
+    background: #8a6d46;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(138, 109, 70, 0.25);
+}
+
+/* CARDS GRID */
+.orders-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ORDER CARD */
+.order-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    border: 1px solid #f0ebe0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(138, 109, 70, 0.12);
+    border-color: #dfc5aa;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f4f1e6;
+    padding-bottom: 15px;
+}
+
+.order-number {
+    font-weight: 700;
+    color: #8a6d46;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d2417;
+}
+
+.order-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #5d4a36;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.meta-item i {
+    color: #b88e2f;
+    font-size: 1.1rem;
+}
+
+/* CARD FOOTER / VIEW BUTTON */
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.view-btn {
+    background: #2d2417;
+    color: #dfc5aa;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.view-btn:hover {
+    background: #8a6d46;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(138, 109, 70, 0.3);
+}
+
+.view-btn i {
+    transition: transform 0.3s;
+}
+
+.view-btn:hover i {
+    transform: translateX(4px);
+}
+
+/* EMPTY STATE */
+.empty-orders {
+    background: #fff;
+    border-radius: 24px;
+    padding: 60px 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid #e5e0d0;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.empty-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #fdfaf5;
+    color: #dfc5aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    box-shadow: inset 0 0 15px rgba(138, 109, 70, 0.1);
+}
+
+.font-playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+.shop-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #2d2417;
+    color: #dfc5aa;
+    padding: 15px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.shop-btn:hover {
+    background: #8a6d46;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(138, 109, 70, 0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.2rem;
+    }
+    .order-card {
+        padding: 20px;
+    }
+    .order-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .view-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

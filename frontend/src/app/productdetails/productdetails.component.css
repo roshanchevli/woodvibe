@@ -126,6 +126,26 @@ h2 {
   color: #dfc5aa;
 }
 
+/* WISHLISTED STATE - RED */
+.wishlist-btn.wishlisted {
+  background: #e74c3c;
+  color: #ffffff;
+  border-color: #e74c3c;
+  animation: heartPop 0.4s ease;
+}
+
+.wishlist-btn.wishlisted:hover {
+  background: #c0392b;
+  color: #ffffff;
+  border-color: #c0392b;
+}
+
+@keyframes heartPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
 .features-list {
   margin-top: 70px;
   border-top: 1px solid #dcd5c1;

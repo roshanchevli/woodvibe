@@ -1,0 +1,63 @@
+<div class="orders-page">
+  <div class="container py-5">
+    
+    <!-- HEADER SECTION -->
+    <div class="orders-header mb-5">
+      <a routerLink="/profile" class="back-link">
+        <i class="ri-arrow-left-line"></i> Back to Profile
+      </a>
+      <h1 class="page-title mt-4">My Orders</h1>
+      <p class="subtitle" *ngIf="orders.length > 0">You have completed {{ orders.length }} order{{ orders.length > 1 ? 's' : '' }}</p>
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div *ngIf="orders.length === 0" class="empty-orders text-center py-5" data-aos="fade-up">
+      <div class="empty-icon mb-4">
+        <i class="ri-shopping-bag-3-line"></i>
+      </div>
+      <h2 class="mb-3 font-playfair">No orders placed yet</h2>
+      <p class="mb-4">Explore our collection and find the perfect piece for your home.</p>
+      <a routerLink="/product" class="shop-btn">
+        <i class="ri-shopping-bag-line"></i> Start Shopping
+      </a>
+    </div>
+
+    <!-- ORDERS LIST -->
+    <div class="orders-grid" *ngIf="orders.length > 0">
+      <div *ngFor="let o of orders; let i = index" class="order-card" 
+           [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 100">
+        
+        <div class="card-top">
+          <div class="order-number">Order #{{ o.orderid || (i + 1) }}</div>
+          <!-- Optional Status Badge if data exists -->
+          <!-- <span class="status-badge" [class]="o.status?.toLowerCase()">{{ o.status || 'Processing' }}</span> -->
+        </div>
+
+        <div class="card-content mt-3">
+          <div class="product-info">
+            <h4 class="product-name">{{ o.pname }}</h4>
+            <div class="order-meta mt-2">
+              <span class="meta-item">
+                <i class="ri-money-rupee-circle-line"></i> Price: ₹{{ o.price | number }}
+              </span>
+              <span class="meta-item">
+                <i class="ri-hashtag"></i> Qty: {{ o.qty }}
+              </span>
+              <span class="meta-item">
+                <i class="ri-wallet-3-line"></i> Total: ₹{{ (o.price * o.qty) | number }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer mt-4">
+          <button class="view-btn" [routerLink]="['/orderdetails', o._id]">
+            View Details <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

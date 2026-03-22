@@ -13,6 +13,9 @@ import { ViewProductComponent } from './product/view-product/view-product.compon
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user/user.component';
 import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsComponent } from './orderdetails/orderdetails.component';
+
+
 
 export const routes: Routes = [
 
@@ -31,6 +34,7 @@ export const routes: Routes = [
   { path: 'product/view', component: ViewProductComponent, canActivate: [authGuard] },
   { path: 'user', component: UserComponent, canActivate: [authGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [authGuard] },
+  { path:'orderdetails/:id',component: OrderDetailsComponent},
 
   // Optional wildcard
   { path: '**', redirectTo: 'login' }

@@ -26,7 +26,7 @@
           <a routerLink="/product" class="nav-link dropdown-toggle"> Products </a>
           <div class="dropdown-menu mega-dropdown">
             <div class="row">
-              <div class="col-lg-3 col-md-4" *ngFor="let c of categories">
+              <div class="col-lg-4 col-md-3" *ngFor="let c of categories">
                 <h6 class="category-title">{{ c.categoryName }}</h6>
 
                 <ul class="list-unstyled">
@@ -55,7 +55,7 @@
         <li class="nav-item dropdown" *ngIf="auth.isLoggedIn()">
           <!-- Navbar Text -->
           <a class="nav-link user-logout dropdown-toggle" data-bs-toggle="dropdown">
-            Logout ({{ auth.getUser()?.name }})
+            Logout ({{ auth.getUser()?.fname }})
           </a>
 
           <!-- Dropdown -->
@@ -77,19 +77,25 @@
 
       <!-- Icons -->
       <div class="d-flex align-items-center gap-3 navbar-icons">
-        <a href="wishlist.php" title="Wishlist">
+        <a (click)="openWishlist()" class="wishlist-icon" style="cursor: pointer;">
           <i class="ri-heart-line"></i>
+          <span *ngIf="wishlistCount > 0" class="wishlist-badge">
+            {{ wishlistCount }}
+          </span>
         </a>
 
-        <a href="cart.php" title="Cart">
+        <a routerLink="/cart" class="cart-icon">
           <i class="ri-shopping-cart-line"></i>
+          <span *ngIf="cartCount > 0" class="cart-badge">
+            {{ cartCount }}
+          </span>
         </a>
 
         <!-- Login / Logout -->
         <!-- USER DROPDOWN -->
-        <div class="dropdown">
+        <!-- <div class="dropdown"> -->
           <!-- If NOT logged in: show only Login -->
-          <a
+          <!-- <a
             class="dropdown-toggle text-decoration-none"
             href="#"
             role="button"
@@ -97,7 +103,7 @@
           >
             <i class="ri-user-line"></i>
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

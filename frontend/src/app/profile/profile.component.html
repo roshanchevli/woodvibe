@@ -1,45 +1,45 @@
-<div class="container py-5">
+<div class="profile-page">
 
-    <!-- Profile Header -->
+  <!-- PROFILE HEADER -->
   <div class="profile-header">
     <div class="icon">
       <i class="ri-user-3-line"></i>
     </div>
 
     <div class="profile-info">
-      <h4 class="mb-1">{{ user.name }}</h4>
-      <p>Email: {{ user.email }}</p>
-      <p *ngIf="user.contact">Phone: {{ user.contact }}</p>
+      <h3>{{user.fname}} {{user.lname}}</h3>
+      <p>Email: {{user.email}}</p>
+      <!-- <p>Phone: {{user.contact || 'N/A'}}</p> -->
     </div>
   </div>
 
-   <!-- Dashboard Items -->
+  <!-- DASHBOARD -->
   <div class="dashboard">
 
-    <div class="card-box">
+    <a (click)="goTo('/myorders')" class="card-box text-decoration-none">
       <i class="ri-shopping-bag-3-line"></i>
       <div class="card-title">My Orders</div>
-    </div>
+    </a>
 
-    <div class="card-box">
+    <a (click)="goTo('/wishlist')" class="card-box text-decoration-none">
       <i class="ri-heart-line"></i>
       <div class="card-title">My Wishlist</div>
-    </div>
+    </a>
 
-    <div class="card-box">
+    <a (click)="goTo('/changepassword')" class="card-box text-decoration-none">
       <i class="ri-lock-password-line"></i>
       <div class="card-title">Change Password</div>
-    </div>
+    </a>
 
-    <div class="card-box">
+    <a (click)="goTo('/editprofile')" class="card-box text-decoration-none">
       <i class="ri-edit-line"></i>
       <div class="card-title">Edit Profile</div>
-    </div>
+    </a>
 
   </div>
 
-    <!-- Logout -->
-    <div class="logout-btn">
+  <!-- LOGOUT -->
+  <div class="logout-btn">
     <button (click)="logout()">Logout</button>
   </div>
 

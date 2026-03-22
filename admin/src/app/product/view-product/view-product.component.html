@@ -1,14 +1,15 @@
 <div class="product-container">
-  <div class="product-card">
+  <div class="product-card" data-aos="fade-up">
     <!-- Header -->
     <div class="card-header">
-      <h4 class="title">📦 Product List</h4>
+      <h4 class="title"><i class="ri-box-3-line"></i> Product List</h4>
 
       <div class="search-box">
+        <i class="ri-search-line search-icon"></i>
         <input
           type="text"
           class="search-input"
-          placeholder="🔍 Search product..."
+          placeholder="Search product..."
           [(ngModel)]="searchText"
           (input)="search()"
         />
@@ -26,27 +27,22 @@
             <th>Price</th>
             <th>Qty</th>
             <th>Date</th>
-            <th width="250">Actions</th>
+            <th width="260">Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let p of filteredProducts; let i = index">
-            <td>{{ i + 1 }}</td>
+          <tr *ngFor="let p of filteredProducts; let i = index" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 50">
+            <td><span class="id-badge">{{ i + 1 }}</span></td>
+            
             <td>
-              <span *ngIf="editId !== p._id">{{ p.pname }}</span>
+              <span *ngIf="editId !== p._id" class="name-text">{{ p.pname }}</span>
               <input *ngIf="editId === p._id" [(ngModel)]="p.pname" class="edit-input" />
             </td>
 
-            <!-- <td>
-              <span *ngIf="editId !== p._id">{{ p.category }}</span>
-              <input *ngIf="editId === p._id"
-                     [(ngModel)]="p.category"
-                     class="edit-input">
-            </td> -->
             <td>
               <!-- Normal Mode -->
-              <span *ngIf="editId !== p._id">{{ p.category }}</span>
+              <span *ngIf="editId !== p._id" class="category-badge">{{ p.category }}</span>
 
               <!-- Edit Mode -->
               <select *ngIf="editId === p._id" [(ngModel)]="p.category" class="edit-input">
@@ -56,14 +52,7 @@
               </select>
             </td>
 
-            <!-- <td>
-              <img
-                *ngIf="p.photo"
-                [src]="'http://localhost:3000/uploads/' + p.photo"
-                class="product-img"
-              />
-            </td> -->
-            <td>
+            <td class="image-cell">
               <!-- Normal Mode -->
               <img
                 *ngIf="editId !== p._id && p.photo"
@@ -72,19 +61,21 @@
               />
 
               <!-- Edit Mode -->
-              <div *ngIf="editId === p._id">
+              <div *ngIf="editId === p._id" class="edit-img-wrapper">
                 <img
                   *ngIf="p.photo"
                   [src]="'http://localhost:3000/uploads/' + p.photo"
                   class="product-img"
                 />
-                <br /><br />
-                <input type="file" (change)="onFile($event)" />
+                <div class="file-upload-small">
+                  <i class="ri-upload-cloud-2-line"></i>
+                  <input type="file" (change)="onFile($event)" />
+                </div>
               </div>
             </td>
 
             <td>
-              <span *ngIf="editId !== p._id">₹{{ p.price }}</span>
+              <span *ngIf="editId !== p._id" class="price-text">₹{{ p.price }}</span>
               <input
                 *ngIf="editId === p._id"
                 [(ngModel)]="p.price"
@@ -94,7 +85,7 @@
             </td>
 
             <td>
-              <span *ngIf="editId !== p._id">{{ p.qty }}</span>
+              <span *ngIf="editId !== p._id">{{ p.qty }} units</span>
               <input
                 *ngIf="editId === p._id"
                 [(ngModel)]="p.qty"
@@ -103,27 +94,32 @@
               />
             </td>
 
-            <td>{{ p.date | date }}</td>
+            <td class="date-text">{{ p.date | date:'MMM d, y' }}</td>
 
-            <td>
+            <td class="actions">
               <button *ngIf="editId !== p._id" class="btn edit-btn" (click)="edit(p)">
-                ✏ Edit
+                <i class="ri-edit-line"></i> Edit
               </button>
 
               <button *ngIf="editId === p._id" class="btn save-btn" (click)="update(p)">
-                💾 Save
+                <i class="ri-save-line"></i> Save
               </button>
 
               <button *ngIf="editId === p._id" class="btn cancel-btn" (click)="cancel()">
-                ❌ Cancel
+                <i class="ri-close-line"></i> Cancel
               </button>
 
-              <button class="btn delete-btn" (click)="delete(p._id)">🗑 Delete</button>
+              <button class="btn delete-btn" (click)="delete(p._id)">
+                <i class="ri-delete-bin-line"></i> Delete
+              </button>
             </td>
           </tr>
 
           <tr *ngIf="filteredProducts.length === 0">
-            <td colspan="7" class="no-data">No products available</td>
+            <td colspan="8" class="no-data">
+              <i class="ri-ghost-line"></i>
+              No products available
+            </td>
           </tr>
         </tbody>
       </table>

@@ -1,0 +1,150 @@
+<div class="cart-page">
+  <div class="container">
+
+    <!-- FILLED CART -->
+    <div *ngIf="cart.length > 0">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Shopping Cart</h2>
+          <p class="item-count">{{ cart.length }} item{{ cart.length > 1 ? 's' : '' }} in your cart</p>
+        </div>
+        <a routerLink="/product" class="continue-link">
+          <i class="ri-arrow-left-line"></i> Continue Shopping
+        </a>
+      </div>
+
+      <div class="cart-grid">
+
+        <!-- LEFT: CART ITEMS -->
+        <div class="cart-items-section">
+
+          <!-- TABLE HEADER -->
+          <div class="cart-table-header">
+            <span class="col-product">Product</span>
+            <span class="col-price">Price</span>
+            <span class="col-qty">Quantity</span>
+            <span class="col-total">Total</span>
+            <span class="col-action"></span>
+          </div>
+
+          <!-- CART ITEMS -->
+          <div class="cart-item" *ngFor="let c of cart">
+
+            <!-- PRODUCT -->
+            <div class="col-product item-product">
+              <a [routerLink]="['/productdetails', c.pid]">
+                <img [src]="'http://localhost:3000/uploads/' + c.photo" alt="{{c.pname}}" />
+              </a>
+              <div class="item-info">
+                <h5 class="item-name">{{ c.pname }}</h5>
+                <p class="item-category">Furniture</p>
+              </div>
+            </div>
+
+            <!-- PRICE -->
+            <div class="col-price item-price">
+              ₹{{ c.price | number }}
+            </div>
+
+            <!-- QUANTITY -->
+            <div class="col-qty">
+              <div class="qty-control">
+                <button class="qty-btn" (click)="decreaseQty(c)">
+                  <i class="ri-subtract-line"></i>
+                </button>
+                <span class="qty-value">{{ c.qty }}</span>
+                <button class="qty-btn" (click)="increaseQty(c)">
+                  <i class="ri-add-line"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- TOTAL -->
+            <div class="col-total item-total-price">
+              ₹{{ c.price * c.qty | number }}
+            </div>
+
+            <!-- REMOVE -->
+            <div class="col-action">
+              <button class="remove-btn" (click)="remove(c._id)" title="Remove">
+                <i class="ri-delete-bin-6-line"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT: SUMMARY -->
+        <div class="summary-section">
+          <div class="summary-card">
+
+            <h4 class="summary-heading">Order Summary</h4>
+
+            <div class="divider"></div>
+
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span>₹{{ subtotal | number }}</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span class="shipping-value">₹{{ shipping }}</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="summary-row total-row">
+              <span>Total</span>
+              <span class="total-value">₹{{ total | number }}</span>
+            </div>
+
+            <a routerLink="/checkout" class="checkout-btn">
+              <i class="ri-shield-check-line"></i> Proceed to Checkout
+            </a>
+
+            <a routerLink="/product" class="continue-btn">
+              Continue Shopping
+            </a>
+
+            <!-- TRUST -->
+            <div class="trust-section">
+              <div class="trust-item">
+                <i class="ri-truck-line"></i>
+                <span>Free delivery on ₹5000+</span>
+              </div>
+              <div class="trust-item">
+                <i class="ri-shield-check-line"></i>
+                <span>Secure payment</span>
+              </div>
+              <div class="trust-item">
+                <i class="ri-refresh-line"></i>
+                <span>30-day easy returns</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EMPTY CART -->
+    <div *ngIf="cart.length === 0" class="empty-state">
+      <div class="empty-card">
+        <div class="empty-icon">
+          <i class="ri-shopping-cart-line"></i>
+        </div>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added anything yet. Browse our collection and find something you'll love.</p>
+        <a routerLink="/product" class="shop-now-btn">
+          <i class="ri-shopping-bag-line"></i> Start Shopping
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,13 +1,16 @@
 <div class="category-container">
-  <div class="category-card">
+  <div class="category-card" data-aos="fade-up">
     <div class="card-header">
-      <h4 class="title">📂 Category List</h4>
+      <h4 class="title">
+        <i class="ri-folder-3-line"></i> Category List
+      </h4>
 
       <div class="search-box">
+        <i class="ri-search-line search-icon"></i>
         <input
           type="text"
           class="search-input"
-          placeholder="🔍 Search category..."
+          placeholder="Search category..."
           [(ngModel)]="searchText"
           (input)="search()"
         />
@@ -21,67 +24,68 @@
             <th>Category ID</th>
             <th>Name</th>
             <th>Photo</th>
-            <th width="240">Actions</th>
+            <th width="260">Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let c of filteredCategories">
+          <tr *ngFor="let c of filteredCategories; let i = index" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 50">
             <td>
-              <span *ngIf="editId !== c._id">{{ c.categoryId }}</span>
+              <span *ngIf="editId !== c._id" class="id-badge">{{ c.categoryId }}</span>
               <input *ngIf="editId === c._id" [(ngModel)]="c.categoryId" class="edit-input" />
             </td>
 
             <td>
-              <span *ngIf="editId !== c._id">{{ c.categoryName }}</span>
+              <span *ngIf="editId !== c._id" class="name-text">{{ c.categoryName }}</span>
               <input *ngIf="editId === c._id" [(ngModel)]="c.categoryName" class="edit-input" />
             </td>
 
-            <!-- <td class="image-cell">
-              <img
-                [src]="'http://localhost:3000/uploads/' + c.photo" height="70" width="70">
-                
-            </td> -->
             <td class="image-cell">
               <!-- Normal Mode -->
               <img
                 *ngIf="editId !== c._id"
                 [src]="'http://localhost:3000/uploads/' + c.photo"
-                height="70"
-                width="70"
+                class="category-img"
               />
 
               <!-- Edit Mode -->
-              <div *ngIf="editId === c._id">
-                <img [src]="'http://localhost:3000/uploads/' + c.photo" height="70" width="70" />
-                <br /><br />
-                <input type="file" (change)="onFile($event)" />
+              <div *ngIf="editId === c._id" class="edit-img-wrapper">
+                <img [src]="'http://localhost:3000/uploads/' + c.photo" class="category-img" />
+                <div class="file-upload-small">
+                  <i class="ri-upload-cloud-2-line"></i>
+                  <input type="file" (change)="onFile($event)" />
+                </div>
               </div>
             </td>
 
             <td class="actions">
               <!-- EDIT -->
               <button *ngIf="editId !== c._id" class="btn edit-btn" (click)="edit(c)">
-                ✏ Edit
+                <i class="ri-edit-line"></i> Edit
               </button>
 
               <!-- SAVE -->
               <button *ngIf="editId === c._id" class="btn save-btn" (click)="update(c)">
-                💾 Save
+                <i class="ri-save-line"></i> Save
               </button>
 
               <!-- CANCEL -->
               <button *ngIf="editId === c._id" class="btn cancel-btn" (click)="cancel()">
-                ❌ Cancel
+                <i class="ri-close-line"></i> Cancel
               </button>
 
               <!-- DELETE -->
-              <button class="btn delete-btn" (click)="delete(c._id)">🗑 Delete</button>
+              <button class="btn delete-btn" (click)="delete(c._id)">
+                <i class="ri-delete-bin-line"></i> Delete
+              </button>
             </td>
           </tr>
 
           <tr *ngIf="filteredCategories.length === 0">
-            <td colspan="4" class="no-data">No matching category found</td>
+            <td colspan="4" class="no-data">
+              <i class="ri-ghost-line"></i>
+              No matching category found
+            </td>
           </tr>
         </tbody>
       </table>

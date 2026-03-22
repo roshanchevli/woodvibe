@@ -1,30 +1,31 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { NgIf } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [NgIf],
+  imports: [CommonModule, RouterLink],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
-  user: any;
+  constructor(private router: Router) {}
 
-  constructor(private auth: AuthService, private router: Router) {
-    this.user = this.auth.getUser();
+  user:any = {};
 
-    // Redirect if not logged in
-    if (!this.user) {
-      this.router.navigate(['/login']);
-    }
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("user") || "{}");
   }
 
-  logout() {
-    this.auth.logout();
-    this.router.navigate(['/']);
+  logout(){
+    localStorage.removeItem("user");
+    window.location.href = "/login";
   }
+
+  goTo(path: string) {
+    this.router.navigate([path]);
+  }
+
 }

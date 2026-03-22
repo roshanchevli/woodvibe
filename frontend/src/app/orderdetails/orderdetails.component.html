@@ -1,0 +1,121 @@
+<div class="order-details-page">
+  <div class="container py-5">
+
+    <!-- BREADCRUMB / TOP NAVIGATION -->
+    <div class="page-top-nav mb-5" data-aos="fade-down">
+      <div class="nav-left">
+        <button routerLink="/profile" class="btn-wood-sm">
+          <i class="ri-arrow-left-line"></i> Profile
+        </button>
+        <i class="ri-arrow-right-s-line separator"></i>
+        <button routerLink="/myorders" class="btn-wood-sm outline">
+          Orders
+        </button>
+      </div>
+      <div class="order-status-wrap" *ngIf="order">
+         <span class="status-badge-pill" [class]="order.status?.toLowerCase()">
+           {{ order.status }}
+         </span>
+      </div>
+    </div>
+
+    <!-- MAIN ORDER CARD -->
+    <div class="order-detail-card" *ngIf="order" data-aos="zoom-in">
+      
+      <div class="card-inner-grid">
+        
+        <!-- LEFT COLUMN: CUSTOMER & SHIPPING INFO -->
+        <div class="info-column border-right">
+          <div class="section-header">
+            <div class="header-icon"><i class="ri-user-heart-line"></i></div>
+            <h3 class="section-title">Customer Information</h3>
+          </div>
+
+          <div class="info-list mt-4">
+            <div class="info-item">
+              <label><i class="ri-hashtag"></i> Order ID</label>
+              <div class="value">#{{ order._id.substring(order._id.length - 8).toUpperCase() }}</div>
+            </div>
+
+            <div class="info-item">
+              <label><i class="ri-user-line"></i> Customer Name</label>
+              <div class="value text-capitalize">{{ user.fname }} {{ user.lname }}</div>
+            </div>
+
+            <div class="info-item">
+              <label><i class="ri-mail-line"></i> Email Address</label>
+              <div class="value">{{ user.email }}</div>
+            </div>
+
+            <div class="info-item">
+              <label><i class="ri-phone-line"></i> Phone Number</label>
+              <div class="value">{{ order.mobile }}</div>
+            </div>
+
+            <div class="info-item">
+              <label><i class="ri-map-pin-line"></i> Shipping Address</label>
+              <div class="value text-capitalize">{{ order.address }}, {{ order.city }} - {{ order.pincode }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: PRODUCT INFO & BILLING -->
+        <div class="info-column">
+          <div class="section-header">
+            <div class="header-icon"><i class="ri-shopping-bag-line"></i></div>
+            <h3 class="section-title">Order Summary</h3>
+          </div>
+
+          <div class="product-preview mt-4">
+            <div class="product-img-wrap">
+               <img [src]="'http://localhost:3000/uploads/' + order.photo" alt="{{order.pname}}">
+            </div>
+            <div class="product-details">
+              <h4 class="p-name">{{ order.pname }}</h4>
+              <p class="p-meta">Interior & Decor</p>
+              <div class="p-stats">
+                 <span>Qty: <b>{{ order.qty }}</b></span>
+                 <span>Price: <b>₹{{ order.price | number }}</b></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="billing-details mt-5">
+            <div class="bill-row">
+              <span>Subtotal</span>
+              <b>₹{{ (order.price * order.qty) | number }}</b>
+            </div>
+            <div class="bill-row">
+              <span>Shipping Fee</span>
+              <b class="text-free">FREE</b>
+            </div>
+            <div class="divider"></div>
+            <div class="bill-row total">
+              <span>Grand Total</span>
+              <span class="final-total">₹{{ (order.price * order.qty) | number }}</span>
+            </div>
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="card-actions mt-5 pt-3">
+             <button routerLink="/myorders" class="btn-dark-pill">
+               <i class="ri-arrow-left-s-line"></i> All My Orders
+             </button>
+             <button (click)="printInvoice()" class="btn-dark-pill outline">
+                <i class="ri-download-line"></i> Invoice
+             </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- LOADING STATE -->
+    <div *ngIf="!order" class="loader-wrap text-center py-5">
+      <div class="wood-spinner"></div>
+      <p class="mt-3">Loading order details...</p>
+    </div>
+
+  </div>
+</div>

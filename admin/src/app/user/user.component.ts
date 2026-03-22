@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.service';
+import { ChangeDetectorRef } from '@angular/core';
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -13,7 +15,7 @@ export class UserComponent implements OnInit {
   users: any[] = [];
   loading: boolean = false;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -21,24 +23,27 @@ export class UserComponent implements OnInit {
 
   // Load users from database
   loadUsers() {
+  this.loading = true;
 
-    this.loading = true;
+  this.api.getUsers().subscribe({
 
-    this.api.getUsers().subscribe({
+    next: (userData: any[]) => {
+      console.log("Users Data:", userData);   // 👈 check here
+      this.users = userData;
+              this.cdr.detectChanges();   // 🔥 FORCE VIEW UPDATE
 
-      next: (data: any[]) => {
-        this.users = data;
-        this.loading = false;
-      },
+      this.loading = false;
 
-      error: (err: any) => {
-        console.error("Error fetching users:", err);
-        this.loading = false;
-      }
+    },
 
-    });
+    error: (err: any) => {
+      console.error("Error fetching users:", err);
+      this.loading = false;
+    }
 
-  }
+  });
+
+}
 
 
   // Toggle active/inactive user

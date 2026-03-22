@@ -1,0 +1,165 @@
+.edit-profile-page {
+  background-color: #f4f1e6;
+  min-height: 100vh;
+  padding-top: 20px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #8a6d46;
+  font-weight: 600;
+  text-decoration: none;
+  background: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+
+.back-link:hover {
+  transform: translateX(-5px);
+  background: #8a6d46;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(138, 109, 70, 0.25);
+}
+
+/* CARD STYLING */
+.edit-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid #e5e0d0;
+}
+
+.card-header {
+  padding: 40px 30px 20px;
+}
+
+.form-title {
+  font-family: 'Playfair Display', serif;
+  color: #2d2417;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.text-muted {
+  color: #a3947c !important;
+  font-size: 0.95rem;
+}
+
+/* FORM FIELDS */
+.form-label {
+  font-weight: 700;
+  color: #8a6d46;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.field-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #dfc5aa;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.form-field {
+  width: 100%;
+  background-color: #fdfaf5;
+  border: 2px solid #f4f1e6;
+  border-radius: 14px;
+  padding: 15px 20px 15px 55px;
+  font-size: 1rem;
+  color: #2d2417;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-field::placeholder {
+  color: #c9bcaf;
+}
+
+.form-field:focus {
+  border-color: #dfc5aa;
+  background-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(223, 197, 170, 0.15);
+}
+
+.form-field:focus + .field-icon {
+  color: #8a6d46;
+}
+
+/* DISABLED STATE */
+.input-wrapper.disabled .form-field {
+  background-color: #f7f7f7;
+  color: #888;
+  cursor: not-allowed;
+  border-color: #eee;
+}
+
+.info-text {
+  font-size: 0.82rem;
+  color: #a3947c;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  width: 100%;
+  background-color: #2d2417;
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #8a6d46;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(138, 109, 70, 0.35);
+}
+
+.save-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.save-btn:disabled {
+  background-color: #e5e0d0;
+  color: #a3947c;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 576px) {
+  .edit-card {
+    border-radius: 0;
+  }
+  .form-title {
+    font-size: 2rem;
+  }
+}

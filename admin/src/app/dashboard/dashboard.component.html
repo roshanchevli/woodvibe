@@ -1,81 +1,125 @@
 <div class="dashboard-container">
-  <!-- Soft Welcome Banner -->
+  <!-- Luxurious Welcome Banner -->
   <div class="welcome-banner">
-    <h2>Welcome Back 👋</h2>
-    <p>Manage your store efficiently from here.</p>
+    <div class="banner-content">
+      <h2>Welcome Back, Workspace Admin</h2>
+      <p>Manage your premium woodcraft store efficiently from here.</p>
+    </div>
+    <div class="banner-img">
+      <i class="ri-leaf-line"></i>
+    </div>
   </div>
 
   <!-- Stats Section -->
-<div class="stats-grid">
+  <div class="stats-grid">
+    <a routerLink="/product/view" class="stat-card">
+      <div class="stat-icon stat-icon-blue">
+        <i class="ri-box-3-line"></i>
+      </div>
+      <div>
+        <p>Total Products</p>
+        <h3>{{ totalProducts }}</h3>
+      </div>
+    </a>
 
-  <a routerLink="/product/view" class="stat-card products">
-    <div class="stat-icon">📦</div>
-    <div>
-      <h3>120</h3>
-      <p>Total Products</p>
+    <a routerLink="/category/view" class="stat-card">
+      <div class="stat-icon stat-icon-purple">
+        <i class="ri-folder-3-line"></i>
+      </div>
+      <div>
+        <p>Total Categories</p>
+        <h3>{{ totalCategories }}</h3>
+      </div>
+    </a>
+
+    <a routerLink="/orders" class="stat-card">
+      <div class="stat-icon stat-icon-green">
+        <i class="ri-shopping-cart-2-line"></i>
+      </div>
+      <div>
+        <p>Total Orders</p>
+        <h3>{{ totalOrders }}</h3>
+      </div>
+    </a>
+
+    <a routerLink="/user" class="stat-card">
+      <div class="stat-icon stat-icon-orange">
+        <i class="ri-group-line"></i>
+      </div>
+      <div>
+        <p>Total Users</p>
+        <h3>{{ totalUsers }}</h3>
+      </div>
+    </a>
+  </div>
+
+  <!-- Charts Section -->
+  <div class="charts-section">
+    <div class="chart-box">
+      <div class="chart-header">
+        <h4><i class="ri-line-chart-line"></i> Monthly Orders Overview</h4>
+      </div>
+      <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+      </div>
     </div>
-  </a>
-
-  <a routerLink="/category/view" class="stat-card category">
-    <div class="stat-icon">📂</div>
-    <div>
-      <h3>45</h3>
-      <p>Total Categories</p>
+    <div class="chart-box doughnut-chart">
+       <div class="chart-header">
+        <h4><i class="ri-pie-chart-line"></i> Categories Mix</h4>
+      </div>
+      <div class="chart-container">
+        <canvas id="categoryChart"></canvas>
+      </div>
     </div>
-  </a>
+  </div>
 
-  <a routerLink="/orders" class="stat-card orders">
-    <div class="stat-icon">🛒</div>
-    <div>
-      <h3>320</h3>
-      <p>Total Orders</p>
-    </div>
-  </a>
-
-  <a routerLink="/user" class="stat-card users">
-    <div class="stat-icon">👤</div>
-    <div>
-      <h3>89</h3>
-      <p>Total Users</p>
-    </div>
-  </a>
-
-</div>
   <!-- Elegant Quick Actions -->
   <div class="quick-section">
     <h3>Quick Actions</h3>
 
     <div class="quick-grid">
-      <a routerLink="/product/add" class="quick-card quick-blue">
-        <div class="quick-icon">📦</div>
+      <a routerLink="/product/add" class="quick-card">
+        <div class="quick-icon">
+          <i class="ri-add-box-line"></i>
+        </div>
         <div class="quick-text">
           <h4>Add Product</h4>
           <p>Create new product entry</p>
         </div>
+        <i class="ri-arrow-right-line action-arrow"></i>
       </a>
 
-      <a routerLink="/category/add" class="quick-card quick-purple">
-        <div class="quick-icon">📂</div>
+      <a routerLink="/category/add" class="quick-card">
+        <div class="quick-icon">
+          <i class="ri-folder-add-line"></i>
+        </div>
         <div class="quick-text">
           <h4>Add Category</h4>
           <p>Create product category</p>
         </div>
+        <i class="ri-arrow-right-line action-arrow"></i>
       </a>
 
-      <a routerLink="/orders" class="quick-card quick-green">
-        <div class="quick-icon">🛒</div>
+      <a routerLink="/orders" class="quick-card">
+        <div class="quick-icon">
+          <i class="ri-file-list-3-line"></i>
+        </div>
         <div class="quick-text">
           <h4>View Orders</h4>
           <p>Manage customer orders</p>
         </div>
+        <i class="ri-arrow-right-line action-arrow"></i>
       </a>
 
-      <a routerLink="/user" class="quick-card quick-orange">
-        <div class="quick-icon">👤</div>
+      <a routerLink="/user" class="quick-card">
+        <div class="quick-icon">
+          <i class="ri-user-settings-line"></i>
+        </div>
         <div class="quick-text">
           <h4>Manage Users</h4>
           <p>Control user accounts</p>
         </div>
+        <i class="ri-arrow-right-line action-arrow"></i>
       </a>
     </div>
   </div>

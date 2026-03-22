@@ -1,68 +1,45 @@
-<div class="user-panel">
+<div class="user-panel" data-aos="fade-in">
 
-  <div class="panel-header">
-    <h2>User Management</h2>
-  </div>
+  <div class="user-card">
+    <div class="panel-header">
+      <h2><i class="ri-user-settings-line"></i> User Management</h2>
+    </div>
 
-  <div class="table-container">
+    <div class="table-container">
 
-    <table class="user-table">
+      <table class="user-table">
 
-      <thead>
-        <tr>
-          <th>Sr.No</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
+        <thead>
+          <tr>
+            <th>Sr.No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
 
-      <tbody>
+        <tbody>
 
-        <tr *ngFor="let user of users; let i = index">
+          <tr *ngFor="let user of users; let i = index">
 
-          <td>{{i+1}}</td>
+            <td><span class="id-badge">{{i+1}}</span></td>
 
-          <td class="user-info">
-            <div class="avatar">{{user.name[0]}}</div>
-            {{user.name}}
-          </td>
+            <td class="name-text">
+               {{user.fname}}
+            </td>
+            <td class="name-text">
+              {{user.lname}}
+            </td>
 
-          <td>{{user.email}}</td>
+            <td class="email-text">{{user.email}}</td>
 
-          <td>{{user.password}}</td>
+          </tr>
 
-          <td>
-            <span 
-              class="status-badge"
-              [class.active]="user.status === 'active'"
-              [class.inactive]="user.status === 'inactive'"
-            >
-              {{user.status}}
-            </span>
-          </td>
+        </tbody>
 
-          <td>
+      </table>
 
-            <button
-              class="toggle-btn"
-              [class.deactivate]="user.status === 'active'"
-              [class.activate]="user.status === 'inactive'"
-              (click)="toggleStatus(user)"
-            >
-              {{user.status === 'active' ? 'Deactivate' : 'Activate'}}
-            </button>
-
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
+    </div>
   </div>
 
 </div>

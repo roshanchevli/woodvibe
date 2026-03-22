@@ -13,26 +13,29 @@ import { filter } from 'rxjs';
       <!-- Sidebar -->
       <aside class="sidebar">
         <div class="logo">
-          <img src='images/woodnew.png' height=130px width=130px class='rounded-circle'>
+          <img src='images/woodnew.png' height=100px width=100px class='rounded-circle'>
+          <div class="logo-text">WoodVibe Admin</div>
         </div>
 
         <nav>
           <!-- DASHBOARD -->
-          <a routerLink="/dashboard" routerLinkActive="active-link"> 🏠 Dashboard </a>
+          <a routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <i class="ri-dashboard-line"></i> Dashboard
+          </a>
 
           <!-- CATEGORY -->
           <div class="menu-group">
             <div class="menu-title" (click)="toggleCategory()">
-              📂 Category
-              <span>{{ showCategory ? '▲' : '▼' }}</span>
+              <div><i class="ri-folder-3-line"></i> Category</div>
+              <i class="ri-arrow-down-s-line" [class.rotate]="showCategory"></i>
             </div>
 
             <div class="submenu-container" [class.open]="showCategory">
               <a routerLink="/category/add" routerLinkActive="active-link" class="submenu">
-                ➕ Add Category
+                 Add Category
               </a>
               <a routerLink="/category/view" routerLinkActive="active-link" class="submenu">
-                📄 View Category
+                 View Category
               </a>
             </div>
           </div>
@@ -40,35 +43,40 @@ import { filter } from 'rxjs';
           <!-- PRODUCT -->
           <div class="menu-group">
             <div class="menu-title" (click)="toggleProduct()">
-              📦 Product
-              <span>{{ showProduct ? '▲' : '▼' }}</span>
+              <div><i class="ri-box-3-line"></i> Product</div>
+              <i class="ri-arrow-down-s-line" [class.rotate]="showProduct"></i>
             </div>
 
             <div class="submenu-container" [class.open]="showProduct">
               <a routerLink="/product/add" routerLinkActive="active-link" class="submenu">
-                ➕ Add Product
+                 Add Product
               </a>
               <a routerLink="/product/view" routerLinkActive="active-link" class="submenu">
-                📄 View Product
+                 View Product
               </a>
             </div>
           </div>
 
           <!-- USER -->
-          <a routerLink="/user" routerLinkActive="active-link"> 👤 User </a>
+          <a routerLink="/user" routerLinkActive="active-link"> 
+            <i class="ri-user-settings-line"></i> User
+          </a>
 
           <!-- ORDERS -->
-          <a routerLink="/orders" routerLinkActive="active-link"> 🛒 Orders </a>
+          <a routerLink="/orders" routerLinkActive="active-link"> 
+            <i class="ri-shopping-cart-2-line"></i> Orders 
+          </a>
         </nav>
       </aside>
 
       <!-- Main Content -->
       <main class="main-content">
         <header class="topbar">
-          <h1>Dashboard</h1>
+          <h1>Workspace Console</h1>
 
-          <div style="display:flex; gap:10px; align-items:center;">
-            <button class="logout-btn" (click)="logout()">Logout</button>
+          <div style="display:flex; gap:15px; align-items:center;">
+            <div class="user-badge"><i class="ri-admin-line"></i> Admin User</div>
+            <button class="logout-btn" (click)="logout()"><i class="ri-logout-box-r-line"></i></button>
           </div>
         </header>
 
@@ -83,7 +91,14 @@ import { filter } from 'rxjs';
   `,
   styles: [
     `
-      /* YOUR SAME CSS — NO CHANGES */
+      :host {
+        --primary: #c29d6d;
+        --sidebar-bg: #161412;
+        --sidebar-hover: rgba(255, 255, 255, 0.05);
+        --text-main: #f5f0e8;
+        --text-light: #b0a596;
+        --content-bg: #fdfbf7;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -92,62 +107,97 @@ import { filter } from 'rxjs';
       .dashboard {
         display: flex;
         height: 100vh;
-        font-family: 'Segoe UI', sans-serif;
+        font-family: 'Outfit', sans-serif;
       }
       .sidebar {
-        width: 260px;
-        background: linear-gradient(180deg, #111827, #1e293b);
-        color: white;
-        padding: 25px 15px;
+        width: 270px;
+        background: var(--sidebar-bg);
+        color: var(--text-main);
+        padding: 30px 20px;
         display: flex;
         flex-direction: column;
-        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+        border-right: 1px solid rgba(255,255,255,0.05);
       }
       .logo {
         text-align: center;
-        margin-bottom: 30px;
-        font-size: 1.3rem;
-        font-weight: bold;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      .logo img {
+        border-radius: 50%;
+        border: 2px solid var(--primary);
+        box-shadow: 0 4px 15px rgba(194, 157, 109, 0.2);
+        object-fit: cover;
+      }
+      .logo-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        color: var(--primary);
         letter-spacing: 1px;
       }
       nav a {
-        display: block;
-        padding: 12px 15px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
         margin-bottom: 8px;
-        color: #cbd5e1;
+        color: var(--text-light);
         text-decoration: none;
-        border-radius: 8px;
+        border-radius: 12px;
         transition: all 0.3s ease;
-        font-size: 0.95rem;
-        position: relative;
+        font-size: 1rem;
+        font-weight: 500;
+        border: 1px solid transparent;
+      }
+      nav a i {
+        font-size: 1.2rem;
       }
       nav a:hover {
-        background: rgba(255, 255, 255, 0.08);
-        color: #ffffff;
-        transform: translateX(5px);
+        background: var(--sidebar-hover);
+        color: var(--text-main);
+        transform: translateX(4px);
       }
       .active-link {
-        background: rgba(255, 255, 255, 0.15);
-        color: #ffffff !important;
-        font-weight: 600;
-        border-left: 4px solid #ffffff;
+        background: rgba(194, 157, 109, 0.1);
+        color: var(--primary) !important;
+        border-color: rgba(194, 157, 109, 0.3);
       }
       .menu-group {
-        margin-top: 15px;
+        margin-bottom: 8px;
       }
       .menu-title {
         display: flex;
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
-        padding: 12px 15px;
-        background: rgba(255, 255, 255, 0.04);
-        border-radius: 8px;
-        font-weight: 600;
+        padding: 14px 18px;
+        background: transparent;
+        color: var(--text-light);
+        border-radius: 12px;
+        font-weight: 500;
         transition: 0.3s;
+        font-size: 1rem;
+      }
+      .menu-title > div {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .menu-title > div i {
+        font-size: 1.2rem;
       }
       .menu-title:hover {
-        background: rgba(255, 255, 255, 0.08);
+        background: var(--sidebar-hover);
+        color: var(--text-main);
+      }
+      .ri-arrow-down-s-line {
+        transition: transform 0.3s;
+      }
+      .ri-arrow-down-s-line.rotate {
+        transform: rotate(180deg);
       }
       .submenu-container {
         max-height: 0;
@@ -156,60 +206,72 @@ import { filter } from 'rxjs';
       }
       .submenu-container.open {
         max-height: 200px;
+        margin-top: 5px;
       }
       .submenu {
-        padding-left: 35px !important;
-        font-size: 0.9rem;
+        padding-left: 50px !important;
+        font-size: 0.95rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
       .main-content {
         flex: 1;
-        background: #ffffff;
+        background: var(--content-bg);
         display: flex;
         flex-direction: column;
       }
       .topbar {
-        background: linear-gradient(180deg, #111827, #1e293b);
-        padding: 18px 25px;
+        background: #ffffff;
+        padding: 20px 35px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
       }
       .topbar h1 {
-        font-size: 1.4rem;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.6rem;
         font-weight: 600;
-        color: #ffffff;
+        color: #1a1a1a;
       }
       .user-badge {
-        background: rgba(255, 255, 255, 0.15);
-        color: #ffffff;
-        padding: 8px 15px;
+        background: rgba(194, 157, 109, 0.1);
+        color: #a8855a;
+        padding: 8px 16px;
         border-radius: 20px;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(194, 157, 109, 0.2);
       }
       .content {
-        padding: 25px;
+        padding: 35px;
         flex: 1;
         overflow-y: auto;
-        background: #ffffff;
-        color: #1e293b;
+        color: #2d2417;
       }
       .logout-btn {
-        background: #ef4444; /* Red */
-        border: none;
-        padding: 8px 16px;
-        color: #ffffff;
-        border-radius: 8px;
+        background: transparent;
+        border: 1px solid #ef4444;
+        color: #ef4444;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
         cursor: pointer;
-        font-size: 0.85rem;
-        font-weight: 500;
+        font-size: 1.2rem;
         transition: all 0.3s ease;
       }
 
       .logout-btn:hover {
-        background: #dc2626; /* Darker red */
+        background: #ef4444;
+        color: #ffffff;
         transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
       }
 
       .logout-btn:active {

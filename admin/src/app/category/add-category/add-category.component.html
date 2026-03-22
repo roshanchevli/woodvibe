@@ -1,41 +1,55 @@
 <div class="category-wrapper">
   <div class="category-card">
+    <div class="card-icon">
+      <i class="ri-folder-add-line"></i>
+    </div>
     <h2 class="title">Add New Category</h2>
-    <p class="subtitle">Create a new product category</p>
+    <p class="subtitle">Create a new product category for your premium woodworking catalog.</p>
 
     <form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)">
-      <div class="form-group">
+      <div class="form-group" data-aos="fade-up">
         <label>Category ID</label>
-        <input
-          type="text"
-          name="categoryId"
-          [(ngModel)]="categoryId"
-          placeholder="Enter category ID"
-          required
-        />
+        <div class="input-wrapper">
+          <i class="ri-barcode-line"></i>
+          <input
+            type="text"
+            name="categoryId"
+            [(ngModel)]="categoryId"
+            placeholder="Enter category ID"
+            required
+          />
+        </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" data-aos="fade-up" data-aos-delay="100">
         <label>Category Name</label>
-        <input
-          type="text"
-          name="categoryName"
-          [(ngModel)]="categoryName"
-          placeholder="Enter category name"
-          required
-        />
+        <div class="input-wrapper">
+          <i class="ri-text"></i>
+          <input
+            type="text"
+            name="categoryName"
+            [(ngModel)]="categoryName"
+            placeholder="Enter category name"
+            required
+          />
+        </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" data-aos="fade-up" data-aos-delay="200">
         <label>Category Image</label>
-        <input type="file" class="file-input" #fileInput (change)="onFileChange($event)" />
+        <div class="input-wrapper file-wrapper">
+          <i class="ri-image-add-line"></i>
+          <input type="file" class="file-input" #fileInput (change)="onFileChange($event)" />
+        </div>
       </div>
 
-      <button class="add-btn" type="submit">Add Category</button>
+      <button class="add-btn" type="submit" data-aos="fade-up" data-aos-delay="300">
+        Add Category <i class="ri-arrow-right-line"></i>
+      </button>
     </form>
 
-    <p class="success-message" *ngIf="message">
-      {{ message }}
-    </p>
+    <div class="success-message" *ngIf="message" data-aos="zoom-in">
+      <i class="ri-checkbox-circle-line"></i> {{ message }}
+    </div>
   </div>
 </div>
