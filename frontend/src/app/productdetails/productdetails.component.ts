@@ -14,6 +14,7 @@ export class ProductdetailsComponent implements OnInit {
 
   product: any = null;
   isWishlisted: boolean = false;
+  mainImage: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class ProductdetailsComponent implements OnInit {
             if (data) {
               console.log("Product data successfully loaded:", data);
               this.product = data;
+              this.mainImage = data.photo || (data.photos && data.photos.length > 0 ? data.photos[0] : '');
               this.checkWishlistStatus();
 
               // Force Angular to check for changes
@@ -53,6 +55,18 @@ export class ProductdetailsComponent implements OnInit {
         });
       }
     });
+  }
+
+  get productImages(): string[] {
+    if (this.product?.photos && this.product.photos.length > 0) {
+      return this.product.photos;
+    }
+    return this.product?.photo ? [this.product.photo] : [];
+  }
+
+  changeMainImage(photo: string) {
+    this.mainImage = photo;
+    this.cdr.detectChanges();
   }
 
   checkWishlistStatus() {

@@ -1,67 +1,82 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 <!-- footer -->
 <footer class="bg-black pt-5">
     <!-- footer top -->
-    <div class="footer-top py-5 mt-3">
-        <div class="container py-5">
-            <div class="row g-4">
+    <div class="footer-top py-5">
+        <div class="container pb-4">
+            <div class="row g-5">
 
                 <!-- BRAND COLUMN -->
-                <div class="col-lg-4" data-aos="fade-up" data-aos-duration="600">
-                    <div class="position-relative d-flex align-items-center gap-2 site-brand">
-                        <div class="lh-1">
-                            <img src="/images/woodnew.png" id="logo" alt="WoodVibe Studio" class="rounded-circle" height="50" width="50">                    
-                            <h5 class="fw-bold m-0 text-white">WoodVibe</h5>
-                            <small class="text-white-50">Studio</small>
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="d-flex align-items-center gap-2 site-brand mb-4">
+                        <img src="/images/woodnew.png" id="logo-footer" alt="WoodVibe Studio" class="rounded-circle">                    
+                        <div>
+                            <h4 class="fw-bold m-0 text-white">WoodVibe</h4>
+                            <small class="text-white-50 text-uppercase tracking-widest">Studio</small>
                         </div>
-                        <a class="stretched-link" href="index.php"></a>
                     </div>
-                    <p class="text-secondary mt-4 pt-4 pe-lg-4">
+                    <p class="text-secondary pe-lg-4 mb-4" style="line-height: 1.8;">
                         Inspired by nature, crafted with passion — redefining modern wooden living.
                         From elegant furniture to timeless décor, we bring warmth, style, and soul to every space you call home.
                     </p>
 
-                    <div class="d-flex align-items-center gap-4 pt-2">
-                        <a href="https://facebook.com" target="_blank" class="link-secondary">Facebook</a>
-                        <a href="https://instagram.com" target="_blank" class="link-secondary">Instagram</a>
-                        <a href="https://twitter.com" target="_blank" class="link-secondary">Twitter</a>
+                    <div class="social-icons d-flex align-items-center gap-3">
+                        <a href="https://facebook.com" target="_blank" class="social-link"><i class="ri-facebook-fill"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="social-link"><i class="ri-instagram-line"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="social-link"><i class="ri-twitter-x-fill"></i></a>
+                        <a href="https://pinterest.com" target="_blank" class="social-link"><i class="ri-pinterest-line"></i></a>
                     </div>
                 </div>
 
                 <!-- CATEGORIES COLUMN -->
-                <div class="col-lg-3" data-aos="fade-up" data-aos-duration="700">
-                    <h5 class="fw-bold pb-2 text-white">Categories</h5>
-                    <ul class="list-unstyled d-grid gap-2">
-                        
-                            
-                        
+                <div class="col-lg-2" data-aos="fade-up" data-os-delay="100">
+                    <h5 class="footer-heading text-white mb-4">Categories</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li *ngFor="let c of categories">
+                            <a [routerLink]="['/products', c.categoryName]" class="hover-glow">{{ c.categoryName }}</a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- QUICK LINKS -->
-                <div class="col-lg-2" data-aos="fade-up" data-aos-duration="800">
-                    <h5 class="fw-bold pb-2 text-white">Quick Links</h5>
-                    <ul class="list-unstyled d-grid gap-2">
-                        <li><a href="about.php" class="link-secondary">About Us</a></li>
-                        <li><a href="contact.php" class="link-secondary">Contact Us</a></li>
-                        <li><a href="product.php" class="link-secondary">Products</a></li>
-                        <li><a href="blog.php" class="link-secondary">Blog</a></li>
-                    </ul>
+                <div class="col-lg-3" data-aos="fade-up" data-os-delay="200">
+                    <h5 class="footer-heading text-white mb-4">Explore</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-unstyled footer-links">
+                                <li><a routerLink="/" class="hover-glow">Home</a></li>
+                                <li><a routerLink="/about" class="hover-glow">About Us</a></li>
+                                <li><a routerLink="/product" class="hover-glow">All Products</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-unstyled footer-links">
+                                <li><a routerLink="/contact" class="hover-glow">Contact</a></li>
+                                <li><a routerLink="/profile" class="hover-glow">My Account</a></li>
+                                <li><a routerLink="/wishlist" class="hover-glow">Wishlist</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- CONTACT -->
-                <div class="col-lg-3" data-aos="fade-up" data-aos-duration="900">
-                    <h5 class="fw-bold pb-2 text-white">Contact Us</h5>
-                    <p class="text-secondary">Need help or have a question?</p>
+                <div class="col-lg-3" data-aos="fade-up" data-os-delay="300">
+                    <h5 class="footer-heading text-white mb-4">Newsletter</h5>
+                    <p class="text-secondary mb-4 small">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                    
+                    <div class="newsletter-form position-relative overflow-hidden mb-4">
+                        <input type="email" class="form-control bg-transparent text-white border-secondary-subtle" placeholder="Enter your email">
+                        <button class="btn btn-premium position-absolute top-50 end-0 translate-middle-y me-1">Join</button>
+                    </div>
 
-                    <div>
-                        <p class="text-secondary mb-1">Phone: 1800964152</p>
-                        <p class="text-secondary mb-1">Fax: 1800964152</p>
-                        <p class="text-secondary mb-0">
-                            Mail: <a href="mailto:support@woodvibe.com" class="text-white">support@woodvibe.com</a>
-                        </p>
+                    <div class="contact-info mt-4">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="ri-mail-line text-premium"></i>
+                            <a href="mailto:support@woodvibe.com" class="text-secondary small hover-text-white">support@woodvibe.com</a>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="ri-phone-line text-premium"></i>
+                            <span class="text-secondary small">1800 964 152</span>
+                        </div>
                     </div>
                 </div>
 
@@ -70,17 +85,23 @@
     </div>
 
     <!-- COPYRIGHT -->
-    <div class="bg-dark py-3">
-        <div class="container">
-            <div class="row align-items-center justify-content-between py-4">
-                <div class="col-auto">
-                </div>
-                <div class="col-auto d-flex gap-5">
-                    <p class="text-center m-0 text-white-50">
-                        Copyright © <a href="index.php" class="text-white">WoodVibe Studio</a> 2025
+    <div class="border-top border-secondary-subtle py-4 mt-4">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center g-3">
+                <div class="col-md-6">
+                    <p class="text-secondary m-0 small">
+                        Copyright © <a routerLink="/" class="text-white-50 text-decoration-none hover-text-white fw-medium">WoodVibe Studio</a> 2025. All Rights Reserved.
                     </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="payment-methods d-flex gap-3 justify-content-center justify-content-md-end opacity-50">
+                        <i class="ri-visa-line fs-3 text-white"></i>
+                        <i class="ri-mastercard-line fs-3 text-white"></i>
+                        <i class="ri-paypal-line fs-3 text-white"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </footer>

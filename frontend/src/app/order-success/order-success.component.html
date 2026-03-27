@@ -1,0 +1,37 @@
+<div class="success-page">
+  <div class="container py-5">
+    <div class="success-card shadow-lg" data-aos="zoom-in">
+      <div class="icon-section">
+        <div class="check-circle shadow-premium">
+          <i class="ri-check-line"></i>
+        </div>
+      </div>
+
+      <div class="content-section text-center">
+        <h1 class="font-premium">Order Placed Successfully!</h1>
+        <p class="order-id text-muted">Order ID: <strong>#{{ orderId }}</strong></p>
+        
+        <div class="status-badge">
+          <i class="ri-truck-line"></i> <span>Preparing for shipping</span>
+        </div>
+
+        <p class="description px-md-5 mt-4">
+          Thank you for choosing <strong>WoodVibe Studio</strong>. Your handcrafted pieces are now being carefully prepared. We'll send you a confirmation email with tracking details shortly.
+        </p>
+
+        <p class="redirect-text mt-3 text-muted">
+          Redirecting to home in <strong>{{ countdown }}s...</strong>
+        </p>
+
+        <div class="action-buttons mt-5">
+          <a routerLink="/myorders" class="btn-primary-premium">
+            <i class="ri-history-line"></i> View My Orders
+          </a>
+          <a routerLink="/" class="btn-secondary-premium">
+             Continue Shopping <i class="ri-arrow-right-line"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

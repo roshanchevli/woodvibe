@@ -1,6 +1,6 @@
 import { Component, OnInit,ChangeDetectorRef  } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -56,14 +56,8 @@ placeOrder(){
 
 if(!this.email || !this.fname || !this.lname || !this.address || !this.city || !this.pincode || !this.phone){
 
-Swal.fire({
-icon:'warning',
-title:'Missing Details',
-text:'Please fill all required fields',
-confirmButtonColor:'#000'
-});
-
-return;
+      alert('Please fill all required fields');
+      return;
 
 }
 
@@ -77,20 +71,9 @@ pincode:this.pincode,
 mobile:this.phone
 };
 
-this.api.placeOrder(data).subscribe(()=>{
-
-Swal.fire({
-icon:'success',
-title:'Order Placed!',
-text:'Your order has been placed successfully 🎉',
-confirmButtonColor:'#000'
-}).then(()=>{
-
-this.router.navigate(['/']);
-
-});
-
-});
+    this.api.placeOrder(data).subscribe(() => {
+      this.router.navigate(['/order-success']);
+    });
 
 }
 

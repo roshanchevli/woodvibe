@@ -136,12 +136,17 @@
 .item-name {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #2d2417;
   margin: 0 0 4px;
-  white-space: nowrap;
+  /* Multi-line ellipsis for long names */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.3;
 }
 
 .item-category {

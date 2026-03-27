@@ -11,6 +11,7 @@ import {  ProductdetailsComponent } from './productdetails/productdetails.compon
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path:'wishlist', component: WishlistComponent},
   { path:'cart', component: CartComponent},
   { path: 'checkout', component: CheckoutComponent},
+  { path: 'order-success', component: OrderSuccessComponent},
   { path: 'editprofile', 
     loadComponent: () => import('./editprofile/editprofile.component')
     .then(m => m.EditProfileComponent)

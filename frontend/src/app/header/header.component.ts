@@ -15,10 +15,11 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit {
 
-  categories:any[] = [];
-  products:any[] = [];
-  wishlistCount:number = 0;
-  cartCount:number = 0;
+  categories: any[] = [];
+  products: any[] = [];
+  activeCategory: string = '';
+  cartCount: number = 0;
+  wishlistCount: number = 0;
 
   constructor(
     public auth: AuthService,
@@ -30,8 +31,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(){
 
     this.api.getCategories().subscribe(data=>{
-      this.cdr.detectChanges();
       this.categories = data;
+      if (this.categories.length > 0) {
+        this.activeCategory = this.categories[0].categoryName;
+      }
+      this.cdr.detectChanges();
     });
 
     this.api.getProducts().subscribe(data=>{
@@ -39,22 +43,23 @@ export class HeaderComponent implements OnInit {
       this.cdr.detectChanges();
     });
 
-    // this.loadWishlistCount();
+    this.api.cartCount$.subscribe(count => {
+      this.cartCount = count;
+      this.cdr.detectChanges();
+    });
 
-    // this.loadCartCount();
+    this.api.wishlistCount$.subscribe(count => {
+      this.wishlistCount = count;
+      this.cdr.detectChanges();
+    });
 
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-if(user.id){
-this.api.getCartCount(user.id).subscribe(res=>{
-this.cartCount = res.count;
-});
-}
+    this.api.updateCounts();
 
   }
 
   logout(){
     this.auth.logout();
+    this.api.updateCounts();
     this.router.navigate(['/']);
     alert("Logged out successfully");
   }
@@ -103,32 +108,10 @@ this.router.navigate(['/wishlist']);
 }
 
 loadWishlistCount(){
-
-const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-if(!user.id){
-this.wishlistCount = 0;
-return;
-}
-
-this.api.getWishlistCount(user.id).subscribe((data:any)=>{
-this.wishlistCount = data.count;
-});
-
+  this.api.updateCounts();
 }
 
 loadCartCount(){
-
-const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-if(!user.id){
-this.cartCount = 0;
-return;
-}
-
-this.api.getCartCount(user.id).subscribe((data:any)=>{
-this.cartCount = data.count;
-});
-
+  this.api.updateCounts();
 }
 }

@@ -89,13 +89,23 @@
           </div>
         </div>
 
-        <!-- Photo -->
+        <!-- Photos -->
         <div class="form-group" data-aos="fade-up" data-aos-delay="350">
-          <label>Product Image</label>
+          <label>Product Images (Max 5)</label>
           <div class="input-wrapper file-wrapper">
             <i class="ri-image-add-line"></i>
-            <input type="file" class="form-control file-input" #fileInput (change)="onFile($event)" />
+            <input type="file" multiple class="form-control file-input" #fileInput (change)="onFile($event)" />
           </div>
+          <div *ngIf="previews.length > 0" class="preview-grid mt-3">
+            <div *ngFor="let preview of previews; let first = first" class="preview-item">
+              <img [src]="preview" class="preview-img" />
+              <span *ngIf="first" class="main-badge">Main</span>
+            </div>
+          </div>
+          <div *ngIf="files && files.length > 0" class="mt-2 text-primary" style="font-size: 0.9rem; font-weight: 500;">
+            {{ files.length }} image(s) selected
+          </div>
+          <small class="text-muted mt-1 d-block"><i class="ri-information-line"></i> Maximum 5 high-resolution images are allowed.</small>
         </div>
 
         <!-- Button -->
