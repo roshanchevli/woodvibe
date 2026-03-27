@@ -54,22 +54,63 @@
 
             <td class="image-cell">
               <!-- Normal Mode -->
-              <img
-                *ngIf="editId !== p._id && p.photo"
-                [src]="'http://localhost:3000/uploads/' + p.photo"
-                class="product-img"
-              />
+              <div *ngIf="editId !== p._id" class="d-flex gap-1 flex-wrap">
+                <ng-container *ngIf="p.photos && p.photos.length > 0; else singlePhoto">
+                  <img
+                    *ngFor="let img of p.photos"
+                    [src]="'http://localhost:3000/uploads/' + img"
+                    class="product-img"
+                    style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;"
+                  />
+                </ng-container>
+                <ng-template #singlePhoto>
+                  <img
+                    *ngIf="p.photo"
+                    [src]="'http://localhost:3000/uploads/' + p.photo"
+                    class="product-img"
+                    style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;"
+                  />
+                </ng-template>
+              </div>
 
-              <!-- Edit Mode -->
+              <!-- Edit Mode: Show current photos first -->
               <div *ngIf="editId === p._id" class="edit-img-wrapper">
-                <img
-                  *ngIf="p.photo"
-                  [src]="'http://localhost:3000/uploads/' + p.photo"
-                  class="product-img"
-                />
+                <div class="d-flex gap-1 flex-wrap mb-2 justify-content-center">
+                  <ng-container *ngIf="p.photos && p.photos.length > 0; else editSinglePhoto">
+                    <img
+                      *ngFor="let img of p.photos"
+                      [src]="'http://localhost:3000/uploads/' + img"
+                      class="product-img"
+                      style="width: 35px; height: 35px; border-radius: 4px;"
+                    />
+                  </ng-container>
+                  <ng-template #editSinglePhoto>
+                    <img
+                      *ngIf="p.photo"
+                      [src]="'http://localhost:3000/uploads/' + p.photo"
+                      class="product-img"
+                      style="width: 35px; height: 35px; border-radius: 4px;"
+                    />
+                  </ng-template>
+                </div>
                 <div class="file-upload-small">
                   <i class="ri-upload-cloud-2-line"></i>
-                  <input type="file" (change)="onFile($event)" />
+                  <input type="file" multiple (change)="onFile($event)" />
+                </div>
+                
+                <!-- NEW PREVIEW GRID -->
+                <div *ngIf="editPreviews.length > 0" class="mini-preview-grid mt-2">
+                  <div *ngFor="let preview of editPreviews; let first = first" class="mini-preview-item">
+                    <img [src]="preview" class="mini-img" />
+                    <span class="new-tag">New</span>
+                  </div>
+                </div>
+
+                <div *ngIf="selectedFiles && selectedFiles.length > 0" class="text-primary mt-1" style="font-size: 0.75rem;">
+                  Adding +{{ selectedFiles.length }} image(s)
+                </div>
+                <div class="text-muted mt-1" style="font-size: 0.65rem;">
+                  Max 5 total allowed.
                 </div>
               </div>
             </td>

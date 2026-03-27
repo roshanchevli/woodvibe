@@ -25,21 +25,52 @@
         <li class="nav-item mega-menu">
           <a routerLink="/product" class="nav-link dropdown-toggle"> Products </a>
           <div class="dropdown-menu mega-dropdown">
-            <div class="row">
-              <div class="col-lg-4 col-md-3" *ngFor="let c of categories">
-                <h6 class="category-title">{{ c.categoryName }}</h6>
+            <div class="row g-0">
+              <!-- Left Sidebar: Categories -->
+              <div class="col-lg-3 border-end">
+                <div class="category-sidebar">
+                  <div *ngFor="let c of categories" 
+                       (mouseenter)="activeCategory = c.categoryName"
+                       class="category-item d-flex align-items-center justify-content-between px-4 py-3"
+                       [class.active]="activeCategory === c.categoryName">
+                    <span>{{ c.categoryName }}</span>
+                    <i class="ri-arrow-right-s-line"></i>
+                  </div>
+                </div>
+              </div>
 
-                <ul class="list-unstyled">
-                  <li *ngFor="let p of getProductsByCategory(c.categoryName)">
-                    <a
-                      class="product-link"
-                      [routerLink]="['/productdetails', p._id]"
-                      (click)="closeMenu()"
-                    >
-                      {{ p.pname }}
-                    </a>
-                  </li>
-                </ul>
+              <!-- Right Pane: Products -->
+              <div class="col-lg-9 p-4">
+                <div class="active-category-header mb-4 d-flex align-items-center justify-content-between">
+                  <h5 class="m-0 fw-bold">{{ activeCategory }}</h5>
+                  <a [routerLink]="['/products', activeCategory]" (click)="closeMenu()" class="text-premium small">View All <i class="ri-arrow-right-line"></i></a>
+                </div>
+
+                <div class="mega-product-grid">
+                  <div class="row g-3">
+                    <div class="col-lg-4" *ngFor="let p of getProductsByCategory(activeCategory)">
+                      <div class="mega-product-card d-flex align-items-center gap-3 p-2 rounded" 
+                           [routerLink]="['/productdetails', p._id]" (click)="closeMenu()">
+                        <div class="product-thumb">
+                          <!-- Primary Image -->
+                          <img [src]="p.photo ? 'http://localhost:3000/uploads/' + p.photo : '/images/placeholder.png'" 
+                               [alt]="p.pname" class="img-fluid rounded primary-img">
+                          <!-- Hover Image -->
+                          <img *ngIf="p.photos && p.photos.length > 1"
+                               [src]="'http://localhost:3000/uploads/' + p.photos[1]" 
+                               [alt]="p.pname" class="img-fluid rounded hover-img">
+                        </div>
+                        <div class="product-info">
+                          <h6 class="pname-small m-0">{{ p.pname }}</h6>
+                          <span class="price-small">₹{{ p.price }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 text-center py-5" *ngIf="getProductsByCategory(activeCategory).length === 0">
+                      <p class="text-muted">No products found in this category.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -25,7 +25,8 @@ export class AddProductComponent implements OnInit {
   qty: '',
   date: ''
 };
-  file: any;
+  files: any[] = [];
+  previews: string[] = [];
   @ViewChild('fileInput') fileInput!: ElementRef;
   
 
@@ -39,7 +40,27 @@ ngOnInit() {
     });
 }
   onFile(e: any) {
-    this.file = e.target.files[0];
+    const selectedFiles = Array.from(e.target.files);
+    
+    if (selectedFiles.length > 5) {
+      alert('You can only upload a maximum of 5 images.');
+      this.fileInput.nativeElement.value = '';
+      this.files = [];
+      this.previews = [];
+      return;
+    }
+
+    this.files = selectedFiles;
+    this.previews = [];
+    
+    this.files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.previews.push(event.target.result);
+        this.cdr.detectChanges();
+      };
+      reader.readAsDataURL(file);
+    });
   }
 
   save(form: NgForm) {
@@ -49,8 +70,10 @@ ngOnInit() {
     fd.append(k, this.product[k]);
   });
 
-  if (this.file) {
-    fd.append('photo', this.file);
+  if (this.files && this.files.length > 0) {
+    this.files.forEach(file => {
+      fd.append('photos', file);
+    });
   }
 
   this.http.post('http://localhost:3000/api/product', fd)
@@ -71,8 +94,9 @@ ngOnInit() {
         date: ''
       };
 
-      // Clear file variable
-      this.file = null;
+      // Clear files variable
+      this.files = [];
+      this.previews = [];
 
       // Clear file input UI
       this.fileInput.nativeElement.value = '';

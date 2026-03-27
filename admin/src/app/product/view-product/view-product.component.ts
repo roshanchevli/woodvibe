@@ -17,14 +17,36 @@ export class ViewProductComponent implements OnInit {
   searchText: string = '';
   editId: any = null;
   categories: any[] = [];
-  selectedFile: any = null;
+  selectedProduct: any = null;
+  selectedFiles: any[] = [];
+  editPreviews: string[] = [];
 
   constructor(
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
   ) {}
   onFile(event: any) {
-    this.selectedFile = event.target.files[0];
+    const newlySelected = Array.from(event.target.files);
+    const existingCount = this.selectedProduct?.photos?.length || (this.selectedProduct?.photo ? 1 : 0);
+
+    if (existingCount + newlySelected.length > 5) {
+      alert(`Maximum 5 images allowed. This product already has ${existingCount} images. You can only add ${5 - existingCount} more.`);
+      event.target.value = '';
+      this.selectedFiles = [];
+      this.editPreviews = [];
+      return;
+    }
+
+    this.selectedFiles = newlySelected;
+    this.editPreviews = [];
+    this.selectedFiles.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.editPreviews.push(e.target.result);
+        this.cdr.detectChanges();
+      };
+      reader.readAsDataURL(file);
+    });
   }
 
   // =============================
@@ -58,6 +80,7 @@ export class ViewProductComponent implements OnInit {
   // =============================
   edit(product: any) {
     this.editId = product._id;
+    this.selectedProduct = product;
   }
 
   // =============================
@@ -87,13 +110,16 @@ export class ViewProductComponent implements OnInit {
     fd.append('qty', product.qty);
     fd.append('date', product.date);
 
-    if (this.selectedFile) {
-      fd.append('photo', this.selectedFile);
+    if (this.selectedFiles && this.selectedFiles.length > 0) {
+      this.selectedFiles.forEach(file => {
+        fd.append('photos', file);
+      });
     }
 
     this.http.put(`http://localhost:3000/api/product/${product._id}`, fd).subscribe(() => {
       this.editId = null;
-      this.selectedFile = null;
+      this.selectedFiles = [];
+      this.editPreviews = [];
       this.ngOnInit();
     });
   }

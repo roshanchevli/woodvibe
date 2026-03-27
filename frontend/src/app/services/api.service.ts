@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,32 @@ export class ApiService {
 
   baseUrl = "http://localhost:3000/api";
 
-  constructor(private http: HttpClient) {}
+  public cartCountSubject = new BehaviorSubject<number>(0);
+  public cartCount$ = this.cartCountSubject.asObservable();
+
+  public wishlistCountSubject = new BehaviorSubject<number>(0);
+  public wishlistCount$ = this.wishlistCountSubject.asObservable();
+
+  constructor(private http: HttpClient) {
+    this.updateCounts();
+  }
+
+  updateCounts() {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (user && user.id) {
+      this.http.get<any>(`${this.baseUrl}/cart/count/${user.id}`).subscribe({
+        next: (res) => this.cartCountSubject.next(res.count || 0),
+        error: () => {}
+      });
+      this.http.get<any>(`${this.baseUrl}/wishlist-count/${user.id}`).subscribe({
+        next: (res) => this.wishlistCountSubject.next(res.count || 0),
+        error: () => {}
+      });
+    } else {
+      this.cartCountSubject.next(0);
+      this.wishlistCountSubject.next(0);
+    }
+  }
 
   // CATEGORY
   getCategories(): Observable<any[]> {
@@ -43,7 +68,7 @@ export class ApiService {
 
   // ADD TO WISHLIST
   addToWishlist(data: any) {
-    return this.http.post(`${this.baseUrl}/wishlist`, data);
+    return this.http.post(`${this.baseUrl}/wishlist`, data).pipe(tap(() => this.updateCounts()));
   }
 
   // GET USER WISHLIST
@@ -53,7 +78,7 @@ export class ApiService {
 
   // REMOVE WISHLIST
   removeWishlist(id: string) {
-    return this.http.delete(`${this.baseUrl}/wishlist/${id}`);
+    return this.http.delete(`${this.baseUrl}/wishlist/${id}`).pipe(tap(() => this.updateCounts()));
   }
 
   // COUNT WISHLIST
@@ -63,11 +88,11 @@ export class ApiService {
 
   // ADD TO CART
   addToCart(data: any) {
-    return this.http.post(`${this.baseUrl}/cart`, data);
+    return this.http.post(`${this.baseUrl}/cart`, data).pipe(tap(() => this.updateCounts()));
   }
 
   increaseCart(pid: string, uid: string) {
-    return this.http.put(`${this.baseUrl}/cart/increase/${pid}/${uid}`, {});
+    return this.http.put(`${this.baseUrl}/cart/increase/${pid}/${uid}`, {}).pipe(tap(() => this.updateCounts()));
   }
 
   // GET USER CART
@@ -77,12 +102,12 @@ export class ApiService {
 
   // REMOVE FROM THE CART
   removeCart(id: string) {
-    return this.http.delete(`${this.baseUrl}/cart/${id}`);
+    return this.http.delete(`${this.baseUrl}/cart/${id}`).pipe(tap(() => this.updateCounts()));
   }
 
   // UPDATE CART
   updateCart(id: string, qty: number) {
-    return this.http.put(`${this.baseUrl}/cart/${id}`, { qty });
+    return this.http.put(`${this.baseUrl}/cart/${id}`, { qty }).pipe(tap(() => this.updateCounts()));
   }
 
   // COUNT CART
@@ -92,7 +117,7 @@ export class ApiService {
 
   // PLACE ORDER
   placeOrder(data: any) {
-    return this.http.post(`${this.baseUrl}/place-order`, data);
+    return this.http.post(`${this.baseUrl}/place-order`, data).pipe(tap(() => this.updateCounts()));
   }
 
   // UPDATE USER PROFILE

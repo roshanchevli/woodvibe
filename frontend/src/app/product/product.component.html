@@ -48,8 +48,14 @@
         <div class="product-badge" *ngIf="i % 5 === 0">New Arrival</div>
 
         <div class="image-container">
+          <!-- Primary Image -->
           <img [src]="p.photo ? 'http://localhost:3000/uploads/' + p.photo : '/images/placeholder.png'"
-            alt="{{ p.pname }}" />
+            alt="{{ p.pname }}" class="primary-img" />
+          
+          <!-- Secondary Image for Hover (if available) -->
+          <img *ngIf="p.photos && p.photos.length > 1"
+            [src]="'http://localhost:3000/uploads/' + p.photos[1]"
+            alt="{{ p.pname }}" class="hover-img" />
         </div>
 
         <div class="product-info">

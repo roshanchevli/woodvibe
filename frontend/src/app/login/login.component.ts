@@ -5,6 +5,7 @@ import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   isLogin = true;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, private api: ApiService) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -73,6 +74,9 @@ export class LoginComponent implements OnInit {
 
           // Save user
           localStorage.setItem('user', JSON.stringify(res.user));
+
+          // Reload cart and wishlist counts
+          this.api.updateCounts();
 
           alert(res.message);
 

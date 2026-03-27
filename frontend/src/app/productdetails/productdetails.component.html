@@ -1,29 +1,48 @@
 <div class="product-details" *ngIf="product">
   <div class="container">
-    <div class="row g-5">
+    <div class="row g-5 align-items-start">
       <!-- Left: Product Image Section -->
-      <div class="col-lg-7">
-        <div class="product-image-section" data-aos="fade-right">
-          <img
-            [src]="
-              product.photo
-                ? 'http://localhost:3000/uploads/' + product.photo
-                : '/images/placeholder.png'
-            "
-            class="product-img shadow-lg"
-            alt="{{ product.pname }}"
-          />
+      <div class="col-lg-6">
+        <div class="product-gallery-section" data-aos="fade-right">
+          <!-- Main Image -->
+          <div class="main-image-wrapper mb-4">
+            <img
+              [src]="
+                mainImage
+                  ? 'http://localhost:3000/uploads/' + mainImage
+                  : '/images/placeholder.png'
+              "
+              class="product-img shadow-lg"
+              alt="{{ product.pname }}"
+            />
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="thumbnail-gallery d-flex gap-3 overflow-auto pb-2" *ngIf="productImages.length > 1">
+            <div 
+              class="thumbnail-item" 
+              *ngFor="let photo of productImages" 
+              (click)="changeMainImage(photo)"
+              [class.active]="mainImage === photo"
+            >
+              <img 
+                [src]="'http://localhost:3000/uploads/' + photo" 
+                class="img-fluid rounded border border-2 pointer" 
+                [ngClass]="mainImage === photo ? 'border-premium shadow-sm' : 'border-transparent'" 
+              />
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Right: Product Info Section -->
-      <div class="col-lg-5">
+      <div class="col-lg-6">
         <div class="product-info-section" data-aos="fade-left">
           <span class="category-badge">{{ product.category }}</span>
           <h2>{{ product.pname }}</h2>
 
           <div class="price">
-            <i class="ri-money-rupee-circle-line"></i>
+            <span class="currency-symbol">₹</span>
             <span>{{ product.price | number }}</span>
           </div>
 

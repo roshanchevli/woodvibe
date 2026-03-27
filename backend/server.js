@@ -30,7 +30,8 @@ const Product = mongoose.model('Product', {
   price: Number,
   qty: Number,
   date: String,
-  photo: String
+  photo: String,
+  photos: [String]
 });
 // ===== User Schema =====
 const UserSchema = new mongoose.Schema({
@@ -208,7 +209,15 @@ app.put('/api/category/:id', upload.single('photo'), async (req, res) => {
 });
 
 // ➕ Add Product
-app.post('/api/product', upload.single('photo'), async (req, res) => {
+app.post('/api/product', upload.array('photos', 5), async (req, res) => {
+  let mainPhoto = '';
+  let photos = [];
+  
+  if (req.files && req.files.length > 0) {
+    photos = req.files.map(file => file.filename);
+    mainPhoto = req.files[0].filename; 
+  }
+
   await Product.create({
     category: req.body.category,
     pname: req.body.pname,
@@ -216,7 +225,8 @@ app.post('/api/product', upload.single('photo'), async (req, res) => {
     price: req.body.price,
     qty: req.body.qty,
     date: req.body.date,
-    photo: req.file ? req.file.filename : ''
+    photo: mainPhoto,
+    photos: photos
   });
   res.json({ message: 'Product Added' });
 });
@@ -249,7 +259,7 @@ app.delete('/api/product/:id', async (req, res) => {
 });
 
 // ✏ UPDATE Product (with optional image)
-app.put('/api/product/:id', upload.single('photo'), async (req, res) => {
+app.put('/api/product/:id', upload.array('photos', 5), async (req, res) => {
   try {
 
     const updateData = {
@@ -261,9 +271,18 @@ app.put('/api/product/:id', upload.single('photo'), async (req, res) => {
       date: req.body.date
     };
 
-    // If new image uploaded
-    if (req.file) {
-      updateData.photo = req.file.filename;
+    // If new images uploaded, append them to existing photos
+    if (req.files && req.files.length > 0) {
+      const existingProduct = await Product.findById(req.params.id);
+      
+      let existingPhotos = existingProduct.photos || [];
+      if (existingPhotos.length === 0 && existingProduct.photo) {
+        existingPhotos = [existingProduct.photo];
+      }
+
+      const newPhotos = req.files.map(file => file.filename);
+      updateData.photos = [...existingPhotos, ...newPhotos];
+      updateData.photo = updateData.photos[0]; // Ensure primary photo exists
     }
 
     await Product.findByIdAndUpdate(req.params.id, updateData);
